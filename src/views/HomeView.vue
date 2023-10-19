@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="d-flex align-items-stretch">
-      <div class="d-flex flex-column" style="flex: 3.7">
+    <div class="d-flex align-items-stretch m-0" >
+      <div class="d-flex flex-column" style="flex: 4">
         <div class="storySection postSection d-flex flex-column ps-5 m-stories">
           <StoriesCom></StoriesCom>
         </div>
-        <div class="postSection d-flex flex-column ps-5 m-auto overflow-hidden">
+        <div class="postSection d-flex flex-column overflow-hidden">
           <PostCard
             v-for="post in posts"
             :post="post"
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="right-sec border-start border-secondary" style="flex: 1">
-        <!-- <h1>sideSection</h1> -->
+        <h1>sideSection</h1>
       </div>
     </div>
   </div>
@@ -43,6 +43,6 @@ export default {
 </script>
 <style scoped>
 .m-stories {
-  margin: 10px 15% !important;
+  margin: 10px 6% !important;
 }
 </style>

@@ -270,8 +270,11 @@ const store = createStore({
     getPostById: (state) => (id: number) => {
       return _.find(state.posts, (post) => post.id === id);
     },
-    getUsersHavingStories:(state)=>()=>{
+    getUsersHavingStories: (state) => () => {
       return _.filter(state.users, (user) => user.hasStories);
+    },
+    getMypost:(state)=>()=>{
+      return _.filter(state.posts,(post:Post)=>post.belongsTo === state.thisUser.uid)
     }
   },
 });

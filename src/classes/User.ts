@@ -30,7 +30,7 @@ export default class User {
     this.profile_img = profile_img;
     this.followers = followers;
     this.following = following;
-    this.userName = this.name.replace(" ","_");
+    this.userName = this.name.replace(" ","_").toLowerCase();
     this.hasStories = hasStories;
     this.stories = stories;
   }

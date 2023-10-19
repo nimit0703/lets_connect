@@ -28,7 +28,7 @@ export default {
     return {
       stories: [] as any, // Your array of stories
       activeIndex: 0, // Index of the currently displayed set of stories
-      storiesPerPage: 8, // Number of stories to display per page
+      storiesPerPage: 7, // Number of stories to display per page
     };
   },
   created() {
@@ -67,7 +67,7 @@ export default {
 .story-container {
   display: flex;
   align-items: center;
-  width: 830px;
+  width: 800px;
 }
 
 .story-button {
