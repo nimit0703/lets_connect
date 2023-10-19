@@ -36,14 +36,25 @@
       </div>
       <div class="d-flex">
         <router-link to="home" class="icon-link">
-          <img src="../assets/user-profile.jpeg" alt="" class="user-profile-nav"> <span class="text">Profile</span>
+          <img :src="user.profile_img" alt="" class="user-profile-nav"> <span class="text">Profile</span>
         </router-link>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-export default {};
+import User from '@/interfaces/User';
+import { mapState } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState({
+      user: (state:any) => state.thisUser as User
+    })
+  },
+  // other component options
+}
+
 </script>
 <style scoped>
 .icon-link {

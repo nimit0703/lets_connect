@@ -9,7 +9,7 @@ const store = createStore({
       theme: "dark",
       email: "nimit@insta.com",
       password: "ab",
-      profile_img: "../assets/user-profile.jpeg",
+      profile_img: "src/assets/user-profile.jpeg",
     } as User,
   },
   mutations: {},
