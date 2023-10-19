@@ -1,11 +1,15 @@
 <template>
   <div class="">
     <div class="img-logo">
-      <img src="../assets/insta_logo.png.png" alt="" class="img-fluid insta-logo " />
+      <img
+        src="../assets/insta_logo.png.png"
+        alt=""
+        class="img-fluid insta-logo"
+      />
     </div>
     <div class="icons d-flex flex-column ps-4">
       <div class="d-flex">
-        <router-link to="home" class="icon-link">
+        <router-link to="/home" class="icon-link">
           <i class="bi bi-house-door-fill"></i> <span class="text">Home</span>
         </router-link>
       </div>
@@ -31,30 +35,30 @@
       </div>
       <div class="d-flex">
         <router-link to="home" class="icon-link">
-          <i class="bi bi-plus-square"></i> <span class="text">create</span>
+          <i class="bi bi-plus-square"></i> <span class="text">Create</span>
         </router-link>
       </div>
       <div class="d-flex">
         <router-link to="home" class="icon-link">
-          <img :src="user.profile_img" alt="" class="user-profile-nav"> <span class="text">Profile</span>
+          <img :src="user.profile_img" alt="" class="user-profile-nav" />
+          <span class="text">Profile</span>
         </router-link>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import User from '@/interfaces/User';
-import { mapState } from 'vuex';
+import User from "@/interfaces/User";
+import { mapState } from "vuex";
 
 export default {
   computed: {
     ...mapState({
-      user: (state:any) => state.thisUser as User
-    })
+      user: (state: any) => state.thisUser as User,
+    }),
   },
   // other component options
-}
-
+};
 </script>
 <style scoped>
 .icon-link {
@@ -65,25 +69,25 @@ export default {
   justify-content: center;
   margin-left: 15px;
   font-size: 1.7vw;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-.icon-link i{
-  font-size: 2.5vw;
+.icon-link i {
+  font-size: 2vw;
 }
 .text {
   margin-top: 25px;
   margin-left: 5px;
 }
-.insta-logo{
-width: 200px;
-margin: 0;
+.insta-logo {
+  width: 200px;
+  margin: 0;
 }
-.user-profile-nav{
-  width: 35px;
-  height: 35px;
+.user-profile-nav {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  margin-top: 21px;
+  margin-top: 25px;
 }
 
 /* You can define more styles for the icon or text here */

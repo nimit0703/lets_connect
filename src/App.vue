@@ -2,8 +2,9 @@
   <div class="app-dark">
     <div class="d-flex">
       <NavCom class="p-2 border-end" style="flex: 1;height: 100vh;">Child 1</NavCom>
-      <div class="p-2  " style="flex: 2.3;height: 100vh;">Child 2</div>
-      <div class="p-2  " style="flex: 1;height: 100vh;">Child 3</div>
+      <div class="p-2  " style="flex: 3.3;height: 100vh;">
+      <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
