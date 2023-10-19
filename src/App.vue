@@ -1,9 +1,9 @@
 <template>
   <div class="app-dark">
-    <div class="d-flex">
-      <NavCom class="p-2 border-end" style="flex: 1;height: 100vh;">Child 1</NavCom>
-      <div class="p-2  " style="flex: 3.3;height: 100vh;">
-      <router-view></router-view>
+    <div class="d-flex align-items-stretch align-self-stretch">
+      <NavCom class="p-2 border-end border-secondary position-fixed" style="flex: 1; height: 100vh;">Child 1</NavCom>
+      <div class="p-2" style="flex: 3.3; height: 100vh;">
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -13,13 +13,14 @@
 import NavCom from './components/NavCom.vue';
 export default {
   name: "App",
-  components:{
+  components: {
     NavCom,
   }
 };
 </script>
+
 <style>
-.app-dark{
+* {
   background-color: black;
   color: #fff;
 }

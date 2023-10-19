@@ -68,7 +68,7 @@ export default {
   align-items: center;
   justify-content: center;
   margin-left: 15px;
-  font-size: 1.7vw;
+  font-size: 1.2vw;
   margin-bottom: 5px;
 }
 
