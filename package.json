@@ -16,7 +16,8 @@
     "lodash-es": "^4.17.21",
     "vue": "^3.3.4",
     "vue-lodash": "^2.1.2",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.2",
