@@ -8,6 +8,8 @@ export default class User {
   followers: number[];
   following: number[];
   userName :string ;
+  hasStories:boolean;
+  stories:Object
   constructor(
     uid: number,
     name: string,
@@ -16,7 +18,9 @@ export default class User {
     password: string,
     profile_img: string,
     followers: number[],
-    following: number[]
+    following: number[],
+    hasStories:boolean,
+    stories:Object
   ) {
     this.uid = uid;
     this.name = name;
@@ -27,5 +31,7 @@ export default class User {
     this.followers = followers;
     this.following = following;
     this.userName = this.name.replace(" ","_");
+    this.hasStories = hasStories;
+    this.stories = stories;
   }
 }

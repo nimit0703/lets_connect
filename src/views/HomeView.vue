@@ -1,10 +1,17 @@
 <template>
   <div>
     <div class="d-flex align-items-stretch">
-      <div class="d-flex flex-column" style="flex: 2.3">
-        <div class="storySection"></div>
-        <div class="postSection d-flex flex-column">
-          <PostCard v-for="post in posts" :post="post" :key="post.id" class="mt-3"></PostCard>
+      <div class="d-flex flex-column" style="flex: 3.7">
+        <div class="storySection postSection d-flex flex-column ps-5 m-stories">
+          <StoriesCom></StoriesCom>
+        </div>
+        <div class="postSection d-flex flex-column ps-5 m-auto overflow-hidden">
+          <PostCard
+            v-for="post in posts"
+            :post="post"
+            :key="post.id"
+            class="mt-3"
+          ></PostCard>
         </div>
       </div>
       <div class="right-sec border-start border-secondary" style="flex: 1">
@@ -17,10 +24,12 @@
 <script lang="ts">
 import store from "../stores/store";
 import PostCard from "../components/PostCard.vue";
+import StoriesCom from "../components/StoriesCom.vue";
 export default {
   name: "HomeView",
   components: {
     PostCard,
+    StoriesCom,
   },
   data() {
     return {
@@ -32,3 +41,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.m-stories {
+  margin: 10px 15% !important;
+}
+</style>
