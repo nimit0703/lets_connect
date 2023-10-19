@@ -39,7 +39,7 @@
         </router-link>
       </div>
       <div class="d-flex">
-        <router-link to="home" class="icon-link">
+        <router-link :to="{name:'userProfile',params:{username:`${user.userName}`}}" class="icon-link">
           <img :src="user.profile_img" alt="" class="user-profile-nav" />
           <span class="text">Profile</span>
         </router-link>

@@ -8,4 +8,5 @@ export default interface User {
   followers: number[];
   following: number[];
   userName: string;
+  hasStories:boolean;
 }
