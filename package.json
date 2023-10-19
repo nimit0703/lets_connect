@@ -1,0 +1,35 @@
+{
+  "name": "instragram",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.1",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "vue": "^3.3.4",
+    "vue-lodash": "^2.1.2",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.2",
+    "@types/lodash": "^4.14.200",
+    "@types/lodash-es": "^4.17.10",
+    "@types/node": "^18.17.17",
+    "@types/vue": "^2.0.0",
+    "@vitejs/plugin-vue": "^4.4.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "@vue/tsconfig": "^0.4.0",
+    "npm-run-all2": "^6.0.6",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0",
+    "vue-tsc": "^1.8.11"
+  }
+}
