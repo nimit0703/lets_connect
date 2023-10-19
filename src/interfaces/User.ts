@@ -1,8 +1,11 @@
-export default interface User{
-    uid: number;
-    name: string;
-    email: string;
-    password : string;
-    theme: string;
-    profile_img: string;
+export default interface User {
+  uid: number;
+  name: string;
+  theme: string;
+  email: string;
+  password: string;
+  profile_img: string;
+  followers: number[];
+  following: number[];
+  userName: string;
 }
