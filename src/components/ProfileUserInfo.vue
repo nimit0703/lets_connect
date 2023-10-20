@@ -25,7 +25,7 @@
       <div class="d-flex mt-1">
         <i class="bi bi-link-45deg"></i>
         <a
-          href="#"
+          href="https://nimit0703.github.io/nimit"
           class="link-underline-dark link-secondary link-offset-2 pe-3"
           style="text-decoration: none"
           >nimit0703.github.io/nimit
@@ -76,6 +76,9 @@ export default {
     };
     this.user.addNewHighlight(newHL1);
     this.user.addNewHighlight(newHL2);
+  },
+  beforeUnmount(){
+    this.user.highlights=[];
   },
   computed: {
     showList(): boolean {
