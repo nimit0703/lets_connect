@@ -12,11 +12,11 @@
       </div>
       <div class="d-flex mt-3">
         <span class="pe-5">{{ myPostsCount }} posts</span>
-        <span class="pe-5" @click="show_following"
-          >{{ following }} Following</span
-        >
         <span class="pe-5" @click="show_followers"
           >{{ followers }} Followers</span
+        >
+        <span class="pe-5" @click="show_following"
+          >{{ following }} Following</span
         >
       </div>
       <div class="d-flex mt-3">
@@ -100,7 +100,7 @@ export default {
   methods: {
     show_followers() {
       console.log("clicked");
-      this.listTitle = "Followers";
+      this.listTitle = "Follower";
       this.list = this.user.followers;
       this.showList = true;
     },

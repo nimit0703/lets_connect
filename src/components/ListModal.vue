@@ -5,7 +5,7 @@
       <i class="bi bi-x"></i>
     </button>
     <div class="title">
-      <p class="text-center p-2 border-bottom text">{{ title }}</p>
+      <p class="text-center p-2 border-bottom text">{{ title }}s</p>
     </div>
     <div class="search">
       <i class="bi bi-search ms-2"></i>
@@ -16,7 +16,7 @@
         placeholder="Search by username"
       />
     </div>
-    <div class="list-container">
+    <div class="list-container mt-2">
       <div class="list-group">
         <button
           type="button"
@@ -30,7 +30,7 @@
                 {{ user(userId).userName }}
               </h6>
             </div>
-            <button class="btn btn-sm btn-secondary">{{ option}}</button>
+            <button class="btn btn-sm btn-secondary">{{ option }}</button>
           </div>
         </button>
       </div>
@@ -45,10 +45,12 @@ export default {
   data() {
     return {
       searchTerm: "", // Data property for the search term
-      option: this.title==="Following"?'remove':this.title,
     };
   },
   computed: {
+    option() {
+      return this.title == "Following" ? "remove" : this.title;
+    },
     user() {
       return (userId: number) => {
         return store.getters.getUserById(userId);
