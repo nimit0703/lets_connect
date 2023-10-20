@@ -296,7 +296,9 @@ const store = createStore({
     },
     unfollow(state,id){
       _.pull(state.thisUser.following,id)
-
+    },
+    follow(state,id:number){
+      state.thisUser.following.push(id);
     }
   },
   actions: {},

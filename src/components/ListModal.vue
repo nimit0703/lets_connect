@@ -1,6 +1,5 @@
 <template>
   <div class="centered-component">
-    <!-- Cancel button in the top-right corner -->
     <button @click="closeModal" class="cancel-button">
       <i class="bi bi-x"></i>
     </button>

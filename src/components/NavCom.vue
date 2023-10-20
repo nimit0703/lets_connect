@@ -14,7 +14,7 @@
         </router-link>
       </div>
       <div class="d-flex">
-        <router-link to="home" class="icon-link">
+        <router-link to="search" class="icon-link">
           <i class="bi bi-search"></i> <span class="text">Search</span>
         </router-link>
       </div>
