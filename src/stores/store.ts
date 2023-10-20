@@ -204,7 +204,7 @@ const store = createStore({
       new Post(
         1,
         `https://picsum.photos/id/${1}/540/540`,
-        2,
+        1,
         [1, 3, 4, 5, 6, 7],
         {},
         "captions"
@@ -236,7 +236,47 @@ const store = createStore({
       new Post(
         5,
         `https://picsum.photos/id/${5}/540/540`,
-        5,
+        1,
+        [1, 3, 4, 5, 6, 7],
+        {},
+        "captions"
+      ),
+      new Post(
+        6,
+        `https://picsum.photos/id/${6}/540/540`,
+        1,
+        [1, 3, 4, 5, 6, 7],
+        {},
+        "captions"
+      ),
+      new Post(
+        7,
+        `https://picsum.photos/id/${7}/540/540`,
+        1,
+        [1, 3, 4, 5, 6, 7],
+        {},
+        "captions"
+      ),
+      new Post(
+        8,
+        `https://picsum.photos/id/${8}/540/540`,
+        1,
+        [1, 3, 4, 5, 6, 7],
+        {},
+        "captions"
+      ),
+      new Post(
+        9,
+        `https://picsum.photos/id/${9}/540/540`,
+        1,
+        [1, 3, 4, 5, 6, 7],
+        {},
+        "captions"
+      ),
+      new Post(
+        10,
+        `https://picsum.photos/id/${10}/540/540`,
+        1,
         [1, 3, 4, 5, 6, 7],
         {},
         "captions"
@@ -273,9 +313,18 @@ const store = createStore({
     getUsersHavingStories: (state) => () => {
       return _.filter(state.users, (user) => user.hasStories);
     },
-    getMypost:(state)=>()=>{
-      return _.filter(state.posts,(post:Post)=>post.belongsTo === state.thisUser.uid)
-    }
+    getMypost: (state) => () => {
+      return _.filter(
+        state.posts,
+        (post: Post) => post.belongsTo === state.thisUser.uid
+      );
+    },
+    getPostsById: (state) => (id:number) => {
+      return _.filter(
+        state.posts,
+        (post: Post) => post.belongsTo === id
+      );
+    },
   },
 });
 

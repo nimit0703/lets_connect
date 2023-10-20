@@ -32,20 +32,39 @@
         </li>
       </ul>
     </div>
-    <div class="tab-content">
-      <div class="tab-pane" :class="{ active: activeTab === 'post' }">post</div>
-      <div class="tab-pane" :class="{ active: activeTab === 'saved' }">
-        Saved content goes here.
+    <div class="tab-content" style="width: inherit">
+      <div
+        class="tab-pane "
+        :class="{ active: activeTab === 'post' }"
+      >
+        <UserPosts></UserPosts>
       </div>
-      <div class="tab-pane" :class="{ active: activeTab === 'tagged' }">
-        Tagged content goes here.
+      <div
+        class="tab-pane "
+        :class="{ active: activeTab === 'saved' }"
+      >
+        <UserSaved />
+      </div>
+      <div
+        class="tab-pane "
+        :class="{ active: activeTab === 'tagged' }"
+      >
+        <UserTagged />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import UserPosts from "./UserPosts.vue";
+import UserSaved from "./UserSaved.vue";
+import UserTagged from "./UserTagged.vue";
 export default {
+  components: {
+    UserPosts,
+    UserSaved,
+    UserTagged,
+  },
   data() {
     return {
       activeTab: "post",
@@ -95,5 +114,8 @@ export default {
   --bs-nav-tabs-link-active-bg: none;
   --bs-nav-tabs-link-active-border-color: none;
   border-bottom: none;
+}
+.nav-item {
+  padding: 0.7rem 0;
 }
 </style>
