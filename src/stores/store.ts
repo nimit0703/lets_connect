@@ -13,8 +13,8 @@ const store = createStore({
       "nimit@insta.com",
       "ab",
       "src/assets/user-profile.jpeg",
-      [2, 3, 4, 5],
-      [3, 4, 5, 6],
+      [26,27,28,29,30,31,32,33,34],
+      [2,3,4],
       true,
       {}
     ),

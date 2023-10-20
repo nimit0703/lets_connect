@@ -1,26 +1,26 @@
 <template>
-    <div>
-      <div class="row">
-        <div class="col-md-4" v-for="post in posts" :key="post.id">
-          <div class="image-container">
-            <img :src="post.img" alt="Image" class="img-fluid" />
-            <div class="hover-content">
-              <div class="data">
-                <div class="ps-3 pt-2">
-                  <i class="bi-heart-fill"></i>
-                  <span style="margin: 15px 10px"> {{ likes(post) }}</span>
-                </div>
-                <div class="ps-3 pt-2">
-                  <i class="bi bi-chat"></i>
-                  <span style="margin: 15px 10px"> {{ comments(post) }}</span>
-                </div>
+  <div>
+    <div class="row">
+      <div class="col-md-4" v-for="post in posts" :key="post.id">
+        <div class="image-container">
+          <img :src="post.img" alt="Image" class="img-fluid" />
+          <div class="hover-content">
+            <div class="data ">
+              <div class="ps-2 pt-2 bg-transparent">
+                <i class="bi-heart-fill bg-transparent"></i>
+                <span style="margin: 15px 10px" class="bg-transparent"> {{ likes(post) }}</span>
+              </div>
+              <div class="ps-2 pt-2 bg-transparent">
+                <i class="bi bi-chat-fill bg-transparent"></i>
+                <span style="margin: 15px 10px" class="bg-transparent"> {{ comments(post) }}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
   <script lang="ts">
   import _ from "lodash";

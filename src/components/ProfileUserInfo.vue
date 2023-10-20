@@ -12,8 +12,12 @@
       </div>
       <div class="d-flex mt-3">
         <span class="pe-5">{{ myPostsCount }} posts</span>
-        <span class="pe-5">{{ following }} Following</span>
-        <span class="pe-5">{{ followers }} Followers</span>
+        <span class="pe-5" @click="show_following"
+          >{{ following }} Following</span
+        >
+        <span class="pe-5" @click="show_followers"
+          >{{ followers }} Followers</span
+        >
       </div>
       <div class="d-flex mt-3">
         <span>Lorem ipsum dolor sit amet.</span>
@@ -33,16 +37,31 @@
     class="highlight-container"
     :highlights="myHighlights"
   ></HighlightCom>
+  <ListModal
+    v-show="showList"
+    :title="listTitle"
+    :list="list"
+    @close="closeModal"
+  ></ListModal>
 </template>
 
 <script lang="ts">
 import _ from "lodash";
 import store from "../stores/store";
-import HighlightCom from "../components/HighlightCom.vue";
+import HighlightCom from "./HighlightCom.vue";
+import ListModal from "./ListModal.vue";
 
 export default {
   components: {
     HighlightCom,
+    ListModal,
+  },
+  data() {
+    return {
+      showList: false,
+      listTitle: "",
+      list: [] as number[],
+    };
   },
   created() {
     const newHL1 = {
@@ -59,6 +78,9 @@ export default {
     this.user.addNewHighlight(newHL2);
   },
   computed: {
+    showList(): boolean {
+      return this.showList;
+    },
     user() {
       return store.state.thisUser;
     },
@@ -69,10 +91,27 @@ export default {
       return _.size(this.user.following);
     },
     myPostsCount() {
-      return _.size(store.getters.getMypost);
+      return _.size(store.getters.getMypost());
     },
     myHighlights() {
       return this.user.highlights;
+    },
+  },
+  methods: {
+    show_followers() {
+      console.log("clicked");
+      this.listTitle = "Followers";
+      this.list = this.user.followers;
+      this.showList = true;
+    },
+    closeModal() {
+      // Function to close the modal
+      this.showList = false;
+    },
+    show_following() {
+      this.listTitle = "Following";
+      this.list = this.user.following;
+      this.showList = true;
     },
   },
 };
