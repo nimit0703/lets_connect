@@ -49,15 +49,16 @@
 </template>
 <script lang="ts">
 import User from "@/interfaces/User";
+import store from "@/stores/store";
 import { mapState } from "vuex";
 
 export default {
-  computed: {
-    ...mapState({
-      user: (state: any) => state.thisUser as User,
-    }),
+  data() {
+    return {
+      user: store.state.thisUser as User,
+      
+    }
   },
-  // other component options
 };
 </script>
 <style scoped>
