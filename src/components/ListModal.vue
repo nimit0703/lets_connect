@@ -30,7 +30,11 @@
                 {{ user(userId).userName }}
               </h6>
             </div>
-            <button class="btn btn-sm btn-secondary">{{ option }}</button>
+            <template v-if="option === 'remove'">
+              <button class="btn btn-sm btn-secondary" @click="unfollow(userId)">{{ option }}</button>            </template>
+            <template v-else>
+              <button class="btn btn-sm btn-secondary">{{ option }}</button>
+            </template>
           </div>
         </button>
       </div>
@@ -71,6 +75,9 @@ export default {
     closeModal() {
       this.$emit("close");
     },
+    unfollow(userId:number) {
+      store.commit('unfollow',userId)
+    },
   },
   props: ["list", "title"],
 };
@@ -84,10 +91,12 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #424242;
+  background-color: #242424;
   border: 1px solid #000;
   z-index: 999;
   overflow: hidden; /* Hidden overflow to prevent the whole modal from scrolling */
+  border-radius: 5%;
+  padding-bottom: 6rem;
 }
 .list-container {
   height: 100%; /* Set a fixed height for the container */
@@ -95,7 +104,7 @@ export default {
   background: transparent;
 }
 .list-group-item {
-  background-color: #424242;
+  background-color: #242424;
   border: #000;
   color: #fff;
 }
@@ -105,7 +114,7 @@ export default {
 }
 .search,
 .text {
-  background: #424242;
+  background: #242424;
   border: none;
 }
 input {
@@ -128,5 +137,22 @@ img {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.list-container::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+}
+
+.list-container::-webkit-scrollbar-track {
+  background: #333; /* Set the background color of the track */
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background: #666; /* Set the color of the scrollbar thumb */
+  border-radius: 5px; /* Add rounded corners to the scrollbar thumb */
+}
+
+.list-container::-webkit-scrollbar-thumb:hover {
+  background: #999; /* Set the color of the scrollbar thumb on hover */
 }
 </style>

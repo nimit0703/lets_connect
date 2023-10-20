@@ -14,7 +14,7 @@ const store = createStore({
       "ab",
       "src/assets/user-profile.jpeg",
       [26,27,28,29,30,31,32,33,34],
-      [2,3,4],
+      [2,3,4,26,27,28,29,30,31,32,33,34],
       true,
       {}
     ),
@@ -294,6 +294,10 @@ const store = createStore({
         _.remove(post.likes, (like) => like === state.thisUser.uid);
       }
     },
+    unfollow(state,id){
+      _.pull(state.thisUser.following,id)
+
+    }
   },
   actions: {},
   getters: {

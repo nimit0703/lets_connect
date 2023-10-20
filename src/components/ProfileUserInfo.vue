@@ -103,15 +103,21 @@ export default {
       this.listTitle = "Follower";
       this.list = this.user.followers;
       this.showList = true;
+      document.body.style.overflow = "hidden";
+
     },
     closeModal() {
       // Function to close the modal
       this.showList = false;
+      document.body.style.overflow = "auto";
+
     },
     show_following() {
       this.listTitle = "Following";
       this.list = this.user.following;
       this.showList = true;
+      document.body.style.overflow = "hidden";
+
     },
   },
 };
