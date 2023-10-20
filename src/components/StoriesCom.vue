@@ -6,7 +6,7 @@
         <div :key="activeIndex" class="story">
           <div
             v-for="story in displayedStories"
-            :key="story.id"
+            :key="story.uid"
             class="individual-story d-flex flex-column"
           >
           <img :src="story.profile_img" alt="" class="img-fluid story-img">
@@ -21,14 +21,15 @@
 </template>
 
 <script lang="ts">
+import User from '@/interfaces/User';
 import store from '../stores/store';
 
 export default {
   data() {
     return {
-      stories: [] as any, // Your array of stories
-      activeIndex: 0, // Index of the currently displayed set of stories
-      storiesPerPage: 7, // Number of stories to display per page
+      stories: [] as User[], 
+      activeIndex: 0, 
+      storiesPerPage: 7, 
     };
   },
   created() {

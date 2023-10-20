@@ -20,17 +20,44 @@
       </div>
       <div class="d-flex mt-1">
         <i class="bi bi-link-45deg"></i>
-        <a href="#" class=" link-underline-dark link-secondary link-offset-2 pe-3" style="text-decoration: none;">nimit0703.github.io/nimit </a>
+        <a
+          href="#"
+          class="link-underline-dark link-secondary link-offset-2 pe-3"
+          style="text-decoration: none"
+          >nimit0703.github.io/nimit
+        </a>
       </div>
     </div>
   </div>
+  <HighlightCom
+    class="highlight-container"
+    :highlights="myHighlights"
+  ></HighlightCom>
 </template>
 
 <script lang="ts">
 import _ from "lodash";
 import store from "../stores/store";
+import HighlightCom from "../components/HighlightCom.vue";
 
 export default {
+  components: {
+    HighlightCom,
+  },
+  created() {
+    const newHL1 = {
+      title: "2k22",
+      poster_img: "https://picsum.photos/200/300?random",
+      highlights: {},
+    };
+    const newHL2 = {
+      title: "2k21",
+      poster_img: "https://picsum.photos/200/300",
+      highlights: {},
+    };
+    this.user.addNewHighlight(newHL1);
+    this.user.addNewHighlight(newHL2);
+  },
   computed: {
     user() {
       return store.state.thisUser;
@@ -44,6 +71,9 @@ export default {
     myPostsCount() {
       return _.size(store.getters.getMypost);
     },
+    myHighlights() {
+      return this.user.highlights;
+    },
   },
 };
 </script>
@@ -51,7 +81,7 @@ export default {
 <style scoped>
 .profile-img {
   width: 300px;
-  height: 300px;
+  height: 200px;
   /* border-radius: 50%; */
 }
 .profile-img img {
@@ -62,11 +92,17 @@ export default {
 
 .profile-data {
   width: 600px;
-  height: 300px;
+  height: 200px;
 }
 .btn {
   --bs-btn-padding-x: 1.75rem;
   --bs-btn-padding-y: 0.1rem;
   margin: 0 7px;
+}
+.highlight-container {
+  width: 70vw;
+  margin: 0 auto;
+  padding: 0 6vw;
+  height: 145px;
 }
 </style>
