@@ -9,7 +9,8 @@ export default class User {
   following: number[];
   userName :string ;
   hasStories:boolean;
-  stories:Object
+  stories:Object;
+  highlights:Object[]= [];
   constructor(
     uid: number,
     name: string,
@@ -33,5 +34,8 @@ export default class User {
     this.userName = this.name.replace(" ","_").toLowerCase();
     this.hasStories = hasStories;
     this.stories = stories;
+  }
+  addNewHighlight(highlight:Object){
+    this.highlights.push(highlight);
   }
 }
