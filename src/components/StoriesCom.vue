@@ -1,35 +1,52 @@
 <template>
-  <div class="story-container">
-    <button @click="showPreviousStories" class="story-button"><i class="bi bi-caret-left-fill"></i></button>
-    <div class="story-wrapper">
-      <transition name="fade" mode="out-in">
-        <div :key="activeIndex" class="story">
-          <div
-            v-for="story in displayedStories"
-            :key="story.uid"
-            class="individual-story d-flex flex-column"
-          >
-          <img :src="story.profile_img" alt="" class="img-fluid story-img">
-          <p>{{story.userName}}</p>
-
+  <div class="">
+    <StoriesGroup v-show="fullStory"></StoriesGroup>
+    <div class="story-container">
+      <button @click="showPreviousStories" class="story-button">
+        <i class="bi bi-caret-left-fill"></i>
+      </button>
+      <div class="story-wrapper">
+        <transition name="fade" mode="out-in">
+          <div :key="activeIndex" class="story">
+            <div
+              v-for="story in displayedStories"
+              :key="story.uid"
+              class="individual-story d-flex flex-column"
+              @click="openStory"
+            >
+              <img
+                :src="story.profile_img"
+                alt=""
+                class="img-fluid story-img"
+              />
+              <p>{{ story.userName }}</p>
+            </div>
           </div>
-        </div>
-      </transition>
+        </transition>
+      </div>
+      <button @click="showNextStories" class="story-button">
+        <i class="bi bi-caret-right-fill"></i>
+      </button>
     </div>
-    <button @click="showNextStories" class="story-button"><i class="bi bi-caret-right-fill"></i></button>
   </div>
 </template>
 
 <script lang="ts">
-import User from '@/interfaces/User';
-import store from '../stores/store';
+import User from "@/interfaces/User";
+import store from "../stores/store";
+
+import StoriesGroup from "./StoriesGroup.vue";
 
 export default {
+  components: {
+    StoriesGroup,
+  },
   data() {
     return {
-      stories: [] as User[], 
-      activeIndex: 0, 
-      storiesPerPage: 7, 
+      stories: [] as User[],
+      activeIndex: 0,
+      storiesPerPage: 7,
+      fullStory: false,
     };
   },
   created() {
@@ -46,6 +63,9 @@ export default {
     },
   },
   methods: {
+    openStory() {
+      this.fullStory = true;
+    },
     showNextStories() {
       if (
         this.activeIndex <
@@ -60,7 +80,6 @@ export default {
       }
     },
   },
-  
 };
 </script>
 
@@ -88,15 +107,15 @@ export default {
   display: flex;
 }
 .individual-story {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: small;
-    width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: small;
+  width: 100px;
 }
 .individual-story img {
-  width: 60px; 
-  height: 60px; 
+  width: 60px;
+  height: 60px;
   margin: 0 5px;
   border-radius: 50%;
   border: 2px solid pink;
