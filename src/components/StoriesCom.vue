@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <StoriesGroup v-show="fullStory"></StoriesGroup>
+    <StoriesGroup v-show="fullStory" :stories="displayedStories"></StoriesGroup>
     <div class="story-container">
       <button @click="showPreviousStories" class="story-button">
         <i class="bi bi-caret-left-fill"></i>

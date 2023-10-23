@@ -16,6 +16,7 @@
 
 <script lang="ts">
 export default {
+    props:["stories"],
     methods: {
     closeModal() {
       this.$emit("close");
