@@ -48,9 +48,8 @@
   </div>
 </template>
 <script lang="ts">
-import User from "@/interfaces/User";
-import store from "@/stores/store";
-import { mapState } from "vuex";
+import User from "../interfaces/User";
+import store from "../stores/store";
 
 export default {
   data() {

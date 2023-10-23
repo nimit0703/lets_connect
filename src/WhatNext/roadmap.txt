@@ -1,0 +1,7 @@
+create a component openStory
+create a component storiesGroup
+
+
+
+same work for heighlights
+then add previouse and next story or heighlight/story component in storeisGroup
