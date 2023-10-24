@@ -3,6 +3,7 @@ import UserInterface from "@/interfaces/User";
 import _ from "lodash";
 import { createStore } from "vuex";
 import User from "../classes/User";
+import Story from "../classes/Story";
 
 const store = createStore({
   state: {
@@ -16,7 +17,7 @@ const store = createStore({
       [26,27,28,29,30,31,32,33,34],
       [2,3,4,26,27,28,29,30,31,32,33,34],
       true,
-      {}
+      []
     ),
     users: [
       new User(
@@ -29,7 +30,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,26,"https://picsum.photos/id/26/200/200")]
       ),
       new User(
         27,
@@ -41,7 +42,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,27,"https://picsum.photos/id/27/200/200"),new Story(1,27,"https://picsum.photos/id/40/200/200"),]
+
       ),
       new User(
         28,
@@ -53,7 +55,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,28,"https://picsum.photos/id/28/200/200"),new Story(1,27,"https://picsum.photos/id/41/200/200"),]
+
       ),
       new User(
         29,
@@ -65,7 +68,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,29,"https://picsum.photos/id/28/200/200"),new Story(1,29,"https://picsum.photos/id/41/200/200"),]
+
       ),
       new User(
         30,
@@ -77,7 +81,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,30,"https://picsum.photos/id/28/200/200"),new Story(1,30,"https://picsum.photos/id/41/200/200"),]
+
       ),
       new User(
         31,
@@ -89,7 +94,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,31,"https://picsum.photos/id/28/200/200")]
       ),
       new User(
         32,
@@ -101,7 +106,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,32,"https://picsum.photos/id/28/200/200")]
       ),
       new User(
         33,
@@ -113,7 +118,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,33,"https://picsum.photos/id/28/200/200")]
+
       ),
       new User(
         34,
@@ -125,7 +131,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,34,"https://picsum.photos/id/28/200/200")]
+
       ),
       new User(
         35,
@@ -137,7 +144,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,35,"https://picsum.photos/id/28/200/200")]
+
       ),
       new User(
         1,
@@ -149,7 +157,8 @@ const store = createStore({
         [2, 3, 4, 5],
         [3, 4, 5, 6],
         true,
-        {}
+        [new Story(1,1,"https://picsum.photos/id/28/200/200")]
+
       ),
       new User(
         2,
@@ -161,7 +170,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,2,"https://picsum.photos/id/28/200/200")]
+
       ),
       new User(
         3,
@@ -173,7 +183,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,3,"https://picsum.photos/id/28/200/200")]
+
       ),
       new User(
         4,
@@ -185,7 +196,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,4,"https://picsum.photos/id/28/200/200")]
+
       ),
       new User(
         5,
@@ -197,7 +209,8 @@ const store = createStore({
         [1],
         [3],
         true,
-        {}
+        [new Story(1,5,"https://picsum.photos/id/28/200/200")]
+
       ),
     ],
     posts: [

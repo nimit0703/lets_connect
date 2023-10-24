@@ -9,7 +9,7 @@ export default class User {
   following: number[];
   userName :string ;
   hasStories:boolean;
-  stories:Object;
+  stories:Object[];
   highlights:Object[]= [];
   constructor(
     uid: number,
@@ -21,7 +21,7 @@ export default class User {
     followers: number[],
     following: number[],
     hasStories:boolean,
-    stories:Object
+    stories:Object[]
   ) {
     this.uid = uid;
     this.name = name;

@@ -7,6 +7,8 @@ export default interface User {
   profile_img: string;
   followers: number[];
   following: number[];
-  userName: string;
+  userName :string ;
   hasStories:boolean;
+  stories:Object;
+  highlights:Object[];
 }

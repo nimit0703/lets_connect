@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <StoriesGroup v-show="fullStory" :stories="displayedStories"></StoriesGroup>
+    <StoriesGroup v-show="fullStory" :stories="getStoriesFromUsers(displayedStories)"></StoriesGroup>
     <div class="story-container">
       <button @click="showPreviousStories" class="story-button">
         <i class="bi bi-caret-left-fill"></i>
@@ -36,6 +36,7 @@ import User from "@/interfaces/User";
 import store from "../stores/store";
 
 import StoriesGroup from "./StoriesGroup.vue";
+import _ from "lodash";
 
 export default {
   components: {
@@ -78,6 +79,11 @@ export default {
       if (this.activeIndex > 0) {
         this.activeIndex--;
       }
+    },
+    getStoriesFromUsers(users:User[]) {
+      const store = _.flatMap(users, (user) => (user.stories))
+      console.log("stories",store)
+      return store;
     },
   },
 };
