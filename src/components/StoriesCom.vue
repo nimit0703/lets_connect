@@ -2,7 +2,7 @@
   <div class="">
     <StoriesGroup
       v-show="fullStory"
-      :stories="getStoriesFromUsers(displayedStories)"
+      :stories="getStoriesFromUsers(stories)"
       :selectedStory="selectedStory"
     ></StoriesGroup>
     <div class="story-container">

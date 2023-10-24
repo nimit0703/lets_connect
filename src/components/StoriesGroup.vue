@@ -1,6 +1,7 @@
 <template>
   <div class="fixed-bg">
-    <div class="left-story bg-transparent p-4" @click="showPreviousStory">
+    <div class="left-story bg-transparent p-4" @click="showPreviousStory" disabled :class="{ 'disabled': currentStoryIndex === 1 }"
+>
       <i class="bi bi-caret-left-fill bg-transparent"></i>
     </div>
     <div class="individual-story-container shadow">
@@ -12,7 +13,7 @@
         <img :src="activeStory?.content" alt="" class="main-img" />
       </div>
     </div>
-    <div class="right-story bg-transparent p-4" @click="showNextStory">
+    <div class="right-story bg-transparent p-4" @click="showNextStory" :disabled="currentStoryIndex === stories.length-1">
       <i class="bi bi-caret-right-fill bg-transparent"></i>
     </div>
   </div>
@@ -45,12 +46,12 @@ export default {
   },
   methods: {
     showPreviousStory() {
-      if (this.currentStoryIndex! > 0) {
+      if (this.currentStoryIndex! >1) {
         this.currentStoryIndex!--;
       }
     },
     showNextStory() {
-      if (this.currentStoryIndex! < this.stories!.length - 1) {
+      if (this.currentStoryIndex < this.stories.length - 1) {
         this.currentStoryIndex!++;
       }
     },
@@ -115,7 +116,7 @@ export default {
   max-height: 90vh;
   object-fit: cover;
 }
-.profil-data {
+.profile-data{
   position: absolute;
   top: 6vh;
   left: 36vw;
@@ -123,12 +124,12 @@ export default {
   display: flex;
 }
 
-.profil-data p {
+.profile-data p {
   background: transparent;
   padding-left: 10px;
   margin-top: 5px;
 }
-.profil-data img {
+.profile-data img {
   width: 40px;
   height: 40px;
   border-radius: 50%;

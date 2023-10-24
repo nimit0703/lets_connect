@@ -30,7 +30,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(1, 26, "https://picsum.photos/id/26/200/200")]
+        [new Story(1, 26, "https://picsum.photos/id/26/1080")]
       ),
       new User(
         27,
@@ -43,8 +43,8 @@ const store = createStore({
         [3],
         true,
         [
-          new Story(2, 27, "https://picsum.photos/id/27/200/200"),
-          new Story(3, 27, "https://picsum.photos/id/45/200/200"),
+          new Story(2, 27, "https://picsum.photos/id/27/1080"),
+          new Story(3, 27, "https://picsum.photos/id/45/1080"),
         ]
       ),
       new User(
@@ -58,8 +58,8 @@ const store = createStore({
         [3],
         true,
         [
-          new Story(4, 28, "https://picsum.photos/id/28/200/200"),
-          new Story(5, 28, "https://picsum.photos/id/242/200/200"),
+          new Story(4, 28, "https://picsum.photos/id/28/1080"),
+          new Story(5, 28, "https://picsum.photos/id/242/1080"),
         ]
       ),
       new User(
@@ -73,8 +73,8 @@ const store = createStore({
         [3],
         true,
         [
-          new Story(6, 29, "https://picsum.photos/id/29/200/200"),
-          new Story(7, 29, "https://picsum.photos/id/24/200/200"),
+          new Story(6, 29, "https://picsum.photos/id/29/1080"),
+          new Story(7, 29, "https://picsum.photos/id/24/1080"),
         ]
       ),
       new User(
@@ -88,8 +88,8 @@ const store = createStore({
         [3],
         true,
         [
-          new Story(8, 30, "https://picsum.photos/id/1/200/200"),
-          new Story(9, 30, "https://picsum.photos/id/1/200/200"),
+          new Story(8, 30, "https://picsum.photos/id/8/1080"),
+          new Story(9, 30, "https://picsum.photos/id/9/1080"),
         ]
       ),
       new User(
@@ -102,7 +102,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(10, 31, "https://picsum.photos/id/1/200/200")]
+        [new Story(10, 31, "https://picsum.photos/id/31/1080")]
       ),
       new User(
         32,
@@ -114,7 +114,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(11, 32, "https://picsum.photos/id/1/200/200")]
+        [new Story(11, 32, "https://picsum.photos/id/75/1080")]
       ),
       new User(
         33,
@@ -126,7 +126,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(12, 33, "https://picsum.photos/id/1/200/200")]
+        [new Story(12, 33, "https://picsum.photos/id/100/1080")]
       ),
       new User(
         34,
@@ -138,7 +138,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(13, 34, "https://picsum.photos/id/1/200/200")]
+        [new Story(13, 34, "https://picsum.photos/id/52/1080")]
       ),
       new User(
         35,
@@ -150,7 +150,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(14, 35, "https://picsum.photos/id/1/200/200")]
+        [new Story(14, 35, "https://picsum.photos/id/74/1080")]
       ),
       new User(
         1,
@@ -162,7 +162,7 @@ const store = createStore({
         [2, 3, 4, 5],
         [3, 4, 5, 6],
         true,
-        [new Story(15, 1, "https://picsum.photos/id/1/200/200")]
+        [new Story(15, 1, "https://picsum.photos/id/19/1080")]
       ),
       new User(
         2,
@@ -174,7 +174,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(16, 2, "https://picsum.photos/id/1/200/200")]
+        [new Story(16, 2, "https://picsum.photos/id/68/1080")]
       ),
       new User(
         3,
@@ -186,7 +186,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(17, 3, "https://picsum.photos/id/1/200/200")]
+        [new Story(17, 3, "https://picsum.photos/id/104/1080")]
       ),
       new User(
         4,
@@ -198,7 +198,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(18, 4, "https://picsum.photos/id/1/200/200")]
+        [new Story(18, 4, "https://picsum.photos/id/74/1080")]
       ),
       new User(
         5,
@@ -210,7 +210,7 @@ const store = createStore({
         [1],
         [3],
         true,
-        [new Story(19, 5, "https://picsum.photos/id/1/200/200")]
+        [new Story(19, 5, "https://picsum.photos/id/59/1080")]
       ),
     ],
 
