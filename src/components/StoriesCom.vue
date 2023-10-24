@@ -84,6 +84,7 @@ export default {
       }
     },
     showPreviousStories() {
+      //this is comment
       if (this.activeIndex > 0) {
         this.activeIndex--;
       }
