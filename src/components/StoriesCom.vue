@@ -1,6 +1,10 @@
 <template>
   <div class="">
-    <StoriesGroup v-show="fullStory" :stories="getStoriesFromUsers(displayedStories)"></StoriesGroup>
+    <StoriesGroup
+      v-show="fullStory"
+      :stories="getStoriesFromUsers(displayedStories)"
+      :selectedStory="selectedStory"
+    ></StoriesGroup>
     <div class="story-container">
       <button @click="showPreviousStories" class="story-button">
         <i class="bi bi-caret-left-fill"></i>
@@ -12,7 +16,7 @@
               v-for="story in displayedStories"
               :key="story.uid"
               class="individual-story d-flex flex-column"
-              @click="openStory"
+              @click="openStory(story.stories[0])"
             >
               <img
                 :src="story.profile_img"
@@ -37,6 +41,7 @@ import store from "../stores/store";
 
 import StoriesGroup from "./StoriesGroup.vue";
 import _ from "lodash";
+import Story from "../classes/Story";
 
 export default {
   components: {
@@ -48,9 +53,11 @@ export default {
       activeIndex: 0,
       storiesPerPage: 7,
       fullStory: false,
+      selectedStory: {} as Story,
     };
   },
   created() {
+    this.fullStory = false;
     this.stories = this.usersWithStories;
   },
   computed: {
@@ -64,8 +71,9 @@ export default {
     },
   },
   methods: {
-    openStory() {
+    openStory(story: Story) {
       this.fullStory = true;
+      this.selectedStory = story;
     },
     showNextStories() {
       if (
@@ -80,9 +88,9 @@ export default {
         this.activeIndex--;
       }
     },
-    getStoriesFromUsers(users:User[]) {
-      const store = _.flatMap(users, (user) => (user.stories))
-      console.log("stories",store)
+    getStoriesFromUsers(users: User[]) {
+      const store = _.flatMap(users, (user) => user.stories);
+      console.log("stories", store);
       return store;
     },
   },

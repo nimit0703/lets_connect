@@ -1,3 +1,5 @@
+import Story from "../classes/Story";
+
 export default interface User {
   uid: number;
   name: string;
@@ -9,6 +11,6 @@ export default interface User {
   following: number[];
   userName :string ;
   hasStories:boolean;
-  stories:Object;
+  stories:Story[];
   highlights:Object[];
 }

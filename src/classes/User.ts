@@ -1,3 +1,5 @@
+import Story from "./Story";
+
 export default class User {
   uid: number;
   name: string;
@@ -9,7 +11,7 @@ export default class User {
   following: number[];
   userName :string ;
   hasStories:boolean;
-  stories:Object[];
+  stories:Story[];
   highlights:Object[]= [];
   constructor(
     uid: number,
@@ -21,7 +23,7 @@ export default class User {
     followers: number[],
     following: number[],
     hasStories:boolean,
-    stories:Object[]
+    stories:Story[]
   ) {
     this.uid = uid;
     this.name = name;

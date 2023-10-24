@@ -1,25 +1,82 @@
 <template>
   <div class="fixed-bg">
-    <div class="left-story bg-transparent p-4"><i class="bi bi-caret-left-fill bg-transparent"></i></div>
-    <div class="indicudual-story-container shadow">
-        <div class="story">
-            <div class="profil-data">
-                <img src="../assets/image-1.png" alt="" >
-                <p>username</p>
-            </div>
-            <img src="../assets/image-1.png" alt="" class="main-img">
-        </div>
+    <div class="left-story bg-transparent p-4" @click="showPreviousStory">
+      <i class="bi bi-caret-left-fill bg-transparent"></i>
     </div>
-    <div class="right-story bg-transparent p-4"><i class="bi bi-caret-right-fill bg-transparent"></i></div>
+    <div class="individual-story-container shadow">
+      <div class="story">
+        <div class="profile-data">
+          <img :src="userData?.profile_img" alt="" />
+          <p>{{ userData?.userName }}</p>
+        </div>
+        <img :src="activeStory?.content" alt="" class="main-img" />
+      </div>
+    </div>
+    <div class="right-story bg-transparent p-4" @click="showNextStory">
+      <i class="bi bi-caret-right-fill bg-transparent"></i>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
+import _ from "lodash";
+import Story from "../classes/Story";
+import store from "../stores/store";
+import User from "../classes/User";
+
 export default {
-    props:["stories"],
-    methods: {
-    closeModal() {
-      this.$emit("close");
+  props: {
+    stories: {
+      type: Array as () => Story[],
+      required: true,
+    },
+    selectedStory: {
+      type: Story,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      currentStoryIndex: this.selectedStory.sid,
+    };
+  },
+  created() {
+    this.currentStoryIndex = this.selectedStory.sid;
+  },
+  methods: {
+    showPreviousStory() {
+      if (this.currentStoryIndex! > 0) {
+        this.currentStoryIndex!--;
+      }
+    },
+    showNextStory() {
+      if (this.currentStoryIndex! < this.stories!.length - 1) {
+        this.currentStoryIndex!++;
+      }
+    },
+  },
+  computed: {
+    activeStory(): Story | null {
+      if (_.isUndefined(this.currentStoryIndex)) {
+        this.currentStoryIndex = this.selectedStory.sid;
+      }
+      const st = _.find(
+        this.stories,
+        (story) => story.sid == this.currentStoryIndex
+      );
+      return st || null;
+    },
+    userData(): User  {
+      if (_.isUndefined(this.currentStoryIndex)) {
+        this.currentStoryIndex = this.selectedStory.sid;
+      }
+      const st = _.find(
+        this.stories,
+        (story) => story.sid == this.currentStoryIndex
+      );
+      const user = store.getters.getUserById(st?.belongTo);
+
+      return user;
     },
   },
 };
@@ -39,10 +96,10 @@ export default {
   /* z-index: 999; */
   overflow-y: hidden;
 }
-.indicudual-story-container{
-    width: 30vw;
-    height: 90vh;
-    background-color: antiquewhite;
+.individual-story-container {
+  width: 30vw;
+  height: 90vh;
+  background-color: antiquewhite;
 }
 .story {
   width: inherit;
@@ -51,33 +108,32 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.story .main-img{
-    width: inherit;
-    height: inherit;
-    max-width: 30vw;
-    max-height: 90vh;
-    object-fit: cover; 
+.story .main-img {
+  width: inherit;
+  height: inherit;
+  max-width: 30vw;
+  max-height: 90vh;
+  object-fit: cover;
 }
 .profil-data {
-    position: absolute;
-    top: 6vh;
-    left: 36vw;
-    background-color: transparent;
-    display: flex;
+  position: absolute;
+  top: 6vh;
+  left: 36vw;
+  background-color: transparent;
+  display: flex;
 }
 
 .profil-data p {
-    background: transparent;
-    padding-left: 10px;
-    margin-top: 5px;
+  background: transparent;
+  padding-left: 10px;
+  margin-top: 5px;
 }
-.profil-data img{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    top: 6vh;
-    left: 36vw;
-    border: 2px solid orange;
-
+.profil-data img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 6vh;
+  left: 36vw;
+  border: 2px solid orange;
 }
 </style>
