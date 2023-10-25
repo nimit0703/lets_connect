@@ -50,6 +50,7 @@ import _ from "lodash";
 import store from "../stores/store";
 import HighlightCom from "./HighlightCom.vue";
 import ListModal from "./ListModal.vue";
+import Story from "../classes/Story";
 
 export default {
   components: {
@@ -64,18 +65,8 @@ export default {
     };
   },
   created() {
-    const newHL1 = {
-      title: "2k22",
-      poster_img: "https://picsum.photos/200/300?random",
-      highlights: {},
-    };
-    const newHL2 = {
-      title: "2k21",
-      poster_img: "https://picsum.photos/200/300",
-      highlights: {},
-    };
-    this.user.addNewHighlight(newHL1);
-    this.user.addNewHighlight(newHL2);
+    this.user.addNewHighlight(new Story(100, 1, "https://picsum.photos/id/1/1080"));
+    this.user.addNewHighlight(new Story(101, 1, "https://picsum.photos/id/75/1080"));
   },
   beforeUnmount(){
     this.user.highlights=[];

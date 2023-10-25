@@ -48,8 +48,13 @@ export default {
     },
   },
   data() {
+    const storyIds = this.stories.map((story) => story.sid);
+    const minStoryId = Math.min(...storyIds);
+    const maxStoryId = Math.max(...storyIds);
     return {
       currentStoryIndex: this.selectedStory.sid,
+      minStoryId,
+      maxStoryId,
     };
   },
   created() {
@@ -57,12 +62,12 @@ export default {
   },
   methods: {
     showPreviousStory() {
-      if (this.currentStoryIndex! > 1) {
+      if (this.currentStoryIndex! > this.minStoryId) {
         this.currentStoryIndex!--;
       }
     },
     showNextStory() {
-      if (this.currentStoryIndex < this.stories.length - 1) {
+      if (this.currentStoryIndex < this.maxStoryId) {
         this.currentStoryIndex!++;
       }
     },
@@ -121,7 +126,7 @@ export default {
   background-color: rgb(8, 8, 8);
   justify-content: center;
   align-items: center;
-  /* z-index: 999; */
+  z-index: 999;
   overflow-y: hidden;
 }
 .individual-story-container {

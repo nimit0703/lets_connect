@@ -12,7 +12,7 @@ export default class User {
   userName :string ;
   hasStories:boolean;
   stories:Story[];
-  highlights:Object[]= [];
+  highlights:Story[]= [];
   constructor(
     uid: number,
     name: string,
@@ -37,7 +37,7 @@ export default class User {
     this.hasStories = hasStories;
     this.stories = stories;
   }
-  addNewHighlight(highlight:Object){
+  addNewHighlight(highlight:Story){
     this.highlights.push(highlight);
   }
 }
