@@ -1,7 +1,11 @@
 <template>
   <div class="fixed-bg">
-    <div class="left-story bg-transparent p-4" @click="showPreviousStory" disabled :class="{ 'disabled': currentStoryIndex === 1 }"
->
+    <div
+      class="left-story bg-transparent p-4"
+      @click="showPreviousStory"
+      disabled
+      :class="{ disabled: currentStoryIndex === 1 }"
+    >
       <i class="bi bi-caret-left-fill bg-transparent"></i>
     </div>
     <div class="individual-story-container shadow">
@@ -13,9 +17,16 @@
         <img :src="activeStory?.content" alt="" class="main-img" />
       </div>
     </div>
-    <div class="right-story bg-transparent p-4" @click="showNextStory" :disabled="currentStoryIndex === stories.length-1">
+    <div
+      class="right-story bg-transparent p-4"
+      @click="showNextStory"
+      :disabled="currentStoryIndex === stories.length - 1"
+    >
       <i class="bi bi-caret-right-fill bg-transparent"></i>
     </div>
+    <button @click="closeModal" class="cancel-button">
+      <i class="bi bi-x"></i>
+    </button>
   </div>
 </template>
 
@@ -46,7 +57,7 @@ export default {
   },
   methods: {
     showPreviousStory() {
-      if (this.currentStoryIndex! >1) {
+      if (this.currentStoryIndex! > 1) {
         this.currentStoryIndex!--;
       }
     },
@@ -54,6 +65,9 @@ export default {
       if (this.currentStoryIndex < this.stories.length - 1) {
         this.currentStoryIndex!++;
       }
+    },
+    closeModal() {
+      this.$emit("close");
     },
   },
   computed: {
@@ -67,7 +81,7 @@ export default {
       );
       return st || null;
     },
-    userData(): User  {
+    userData(): User {
       if (_.isUndefined(this.currentStoryIndex)) {
         this.currentStoryIndex = this.selectedStory.sid;
       }
@@ -84,6 +98,19 @@ export default {
 </script>
 
 <style scoped>
+.cancel-button {
+  position: absolute;
+
+  left: 62.5vw;
+  top: 5vh;
+  background: transparent;
+  border: none;
+}
+
+.cancel-button i{
+  background: transparent;
+  font-size: 1.8vw;
+}
 .fixed-bg {
   position: fixed;
   left: 0;
@@ -116,7 +143,7 @@ export default {
   max-height: 90vh;
   object-fit: cover;
 }
-.profile-data{
+.profile-data {
   position: absolute;
   top: 6vh;
   left: 36vw;

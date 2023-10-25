@@ -4,6 +4,7 @@
       v-show="fullStory"
       :stories="getStoriesFromUsers(stories)"
       :selectedStory="selectedStory"
+      @close="closeStory"
     ></StoriesGroup>
     <div class="story-container">
       <button @click="showPreviousStories" class="story-button">
@@ -75,6 +76,10 @@ export default {
       this.fullStory = true;
       this.selectedStory = story;
     },
+    closeStory() {
+      this.fullStory = false;
+
+    },
     showNextStories() {
       if (
         this.activeIndex <
@@ -84,7 +89,6 @@ export default {
       }
     },
     showPreviousStories() {
-      //this is comment
       if (this.activeIndex > 0) {
         this.activeIndex--;
       }
