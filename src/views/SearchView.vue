@@ -12,13 +12,13 @@ export default {
   components: {
     SearchCom,
   },
-  mounted() {
-    console.log("search mounted");
-    store.state.showLoder = false;
-  },
-  beforeUnmount() {
-    console.log("search unmounted");
+  created() {
     store.state.showLoder = true;
+  },
+  mounted() {
+    setTimeout(() => {
+      store.state.showLoder = false;
+    }, 200);
   },
 };
 </script>

@@ -9,20 +9,9 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/home", name: "home", component: HomeViewVue },
+    { path: "/", name: "home", component: HomeViewVue },
     { path: "/:username", name: "userProfile", component: UserProfile },
     { path: "/search", name: "search", component: SearchView },
   ],
 });
-router.beforeEach((to, from, next) => {
-  store.state.showLoder = true;
-  setTimeout(() => {
-    next();
-  }, 200);
-});
-router.afterEach((to, from) => {
-  setTimeout(() => {
-    store.state.showLoder = false;
-  }, 200);
-});
-
 export default router;

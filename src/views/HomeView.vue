@@ -37,17 +37,16 @@ export default {
     };
   },
   created() {
+    store.state.showLoder = true;
     console.log(this.posts);
   },
-  mounted(){
-
+  mounted() {
     console.log("homeview mounted");
-    store.state.showLoder =false;
+    setTimeout(() => {
+      store.state.showLoder = false;
+    }, 200);
   },
-  beforeUnmount() {
-    console.log("homeview unmounted");
-    store.state.showLoder =true
-  },
+
 };
 </script>
 <style scoped>
