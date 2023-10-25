@@ -5,16 +5,29 @@
       <div class="p-2" style="flex: 3.3; height: 100vh;margin-left: 15%;">
         <router-view></router-view>
       </div>
+      <Loader v-if="isLoading" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import NavCom from './components/NavCom.vue';
+import Loader from './components/Loader.vue';
+import store from './stores/store';
 export default {
   name: "App",
   components: {
     NavCom,
+    Loader,
+  },
+  data() {
+    return {
+    };
+  },
+  computed:{
+    isLoading(){
+      return store.state.showLoder;
+    }
   }
 };
 </script>

@@ -1,20 +1,27 @@
 <template>
-    <div>
-        <div class="d-flex flex-column">
-            <ProfileUserInfo></ProfileUserInfo>
-            <ProfileUserFeed></ProfileUserFeed>
-        </div>
+  <div>
+    <div class="d-flex flex-column">
+      <ProfileUserInfo></ProfileUserInfo>
+      <ProfileUserFeed></ProfileUserFeed>
     </div>
+  </div>
 </template>
 <script lang="ts">
-import ProfileUserFeed from '../components/ProfileUserFeed.vue';
-import ProfileUserInfo from '../components/ProfileUserInfo.vue';
-export default{
-    components:{
-        ProfileUserInfo,
-        ProfileUserFeed,
-
-    }
-
-}
+import store from "../stores/store";
+import ProfileUserFeed from "../components/ProfileUserFeed.vue";
+import ProfileUserInfo from "../components/ProfileUserInfo.vue";
+export default {
+  components: {
+    ProfileUserInfo,
+    ProfileUserFeed,
+  },
+  mounted() {
+    console.log("userProfileView mounted");
+    store.state.showLoder = false;
+  },
+  beforeUnmount() {
+    console.log("userProfileView unmounted");
+    store.state.showLoder = true;
+  },
+};
 </script>

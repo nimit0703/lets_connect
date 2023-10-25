@@ -7,6 +7,7 @@ import Story from "../classes/Story";
 
 const store = createStore({
   state: {
+    showLoder:false,
     thisUser: new User(
       1,
       "Nimit Trevadiya",

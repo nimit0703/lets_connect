@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex align-items-stretch m-0" >
+    <div class="d-flex align-items-stretch m-0">
       <div class="d-flex flex-column" style="flex: 4">
         <div class="storySection postSection d-flex flex-column ps-5 m-stories">
           <StoriesCom></StoriesCom>
@@ -38,6 +38,15 @@ export default {
   },
   created() {
     console.log(this.posts);
+  },
+  mounted(){
+
+    console.log("homeview mounted");
+    store.state.showLoder =false;
+  },
+  beforeUnmount() {
+    console.log("homeview unmounted");
+    store.state.showLoder =true
   },
 };
 </script>
