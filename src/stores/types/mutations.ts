@@ -18,5 +18,7 @@ const mutations = {
     state.thisUser.following.push(id);
   },
 };
+// comment added
+
 
 export default mutations;
