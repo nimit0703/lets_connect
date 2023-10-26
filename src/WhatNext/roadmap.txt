@@ -1,7 +1,9 @@
-create a component openStory
-create a component storiesGroup
+-> create a component openStory
+-> create a component storiesGroup
 
 
 
-same work for heighlights
-then add previouse and next story or heighlight/story component in storeisGrouptT
+-> same work for heighlights
+-> then add previouse and next story or heighlight/story component in storeisGrouptT
+
+-> use backend for data fatching
