@@ -34,19 +34,18 @@ export default {
   beforeCreate() {
     this.loading = true; // Set loading state to true before component is created
   },
-  created() {
-    console.log("app created", store.state);
-
-    store.dispatch("fetchUserData")
-      .then(() => {
-        console.log("data fetch", store.state);
-      })
-      .catch(error => {
-        console.error("Error fetching data:", error);
-      })
-      .finally(() => {
-        this.loading = false; // Set loading state to false when data fetching is complete
-      });
+  async created() {
+    try {
+      await Promise.all([
+        store.dispatch("fetchUserData"),
+        store.dispatch("fetchPostData"),
+      ]);
+      console.log("Data fetched", store.state);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      this.loading = false;
+    }
   },
 };
 </script>
