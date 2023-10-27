@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="searchpage">
     <SearchCom></SearchCom>
   </div>
 </template>
@@ -22,3 +22,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.searchpage {
+  display: flex;
+  width: 100%;
+}
+</style>
