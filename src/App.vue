@@ -4,12 +4,13 @@
       <NavCom
         class="p-2 border-end border-secondary position-fixed"
         style="flex: 1; height: 100vh"
-        >Child 1</NavCom
-      >
+      >Child 1</NavCom>
       <div class="p-2" style="flex: 3.3; height: 100vh; margin-left: 15%">
-        <router-view></router-view>
+        <router-view v-if="!loading"></router-view>
+        <div v-if="loading">
+          <Loader />
+        </div>
       </div>
-      <Loader v-if="isLoading" />
     </div>
   </div>
 </template>
@@ -18,6 +19,7 @@
 import NavCom from "./components/NavCom.vue";
 import Loader from "./components/Loader.vue";
 import store from "./stores/store";
+
 export default {
   name: "App",
   components: {
@@ -25,15 +27,26 @@ export default {
     Loader,
   },
   data() {
-    return {};
+    return {
+      loading: true, // Initialize loading state to true
+    };
   },
-  computed: {
-    isLoading() {
-      return store.state.showLoder;
-    },
+  beforeCreate() {
+    this.loading = true; // Set loading state to true before component is created
   },
   created() {
-    store.dispatch("fetchUserData");
+    console.log("app created", store.state);
+
+    store.dispatch("fetchUserData")
+      .then(() => {
+        console.log("data fetch", store.state);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+      })
+      .finally(() => {
+        this.loading = false; // Set loading state to false when data fetching is complete
+      });
   },
 };
 </script>

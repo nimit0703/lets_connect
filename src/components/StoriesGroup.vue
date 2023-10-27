@@ -52,13 +52,16 @@ export default {
     const minStoryId = Math.min(...storyIds);
     const maxStoryId = Math.max(...storyIds);
     return {
-      currentStoryIndex: this.selectedStory.sid,
+      currentStoryIndex: minStoryId,
       minStoryId,
       maxStoryId,
     };
   },
+
   created() {
-    this.currentStoryIndex = this.selectedStory.sid;
+    console.log("storiesGrop prop: stories", this.stories);
+    console.log("storiesGrop prop: selectedStory", this.selectedStory);
+    // this.currentStoryIndex = this.selectedStory.sid;
   },
   methods: {
     showPreviousStory() {
@@ -112,7 +115,7 @@ export default {
   border: none;
 }
 
-.cancel-button i{
+.cancel-button i {
   background: transparent;
   font-size: 1.8vw;
 }

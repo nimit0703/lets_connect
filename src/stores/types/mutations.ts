@@ -2,7 +2,7 @@ import User from "../../classes/User";
 import _ from "lodash";
 
 const mutations = {
-  setUsers(state:any, users:User[]) {
+  setUsers(state: any, users: User[]) {
     state.users = users;
   },
   likedPost(state: any, postId: number) {
@@ -21,8 +21,10 @@ const mutations = {
   follow(state: any, id: number) {
     state.thisUser.following.push(id);
   },
+  setLoader(state: any, value: boolean) {
+    state.showLoder = value;
+  },
 };
 // comment added
-
 
 export default mutations;

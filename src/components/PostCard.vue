@@ -59,21 +59,28 @@
 </template>
 
 <script lang="ts">
-import User from "@/classes/User";
+import User from "../classes/User";
 import store from "../stores/store";
 import _ from "lodash";
+import Post from "../classes/Post";
 
 export default {
   name: "PostCard",
   data() {
     return {
-      user: store.getters.getUserById(this.post?.belongsTo) as User,
+      user: {} as User,
       isHovered: false,
       isLiked: false, 
     };
   },
   props: {
-    post: Object,
+    post: Post,
+  },
+  created() {
+    console.log("postCard created",store.state) 
+    this.user = store.getters.getUserById(this.post?.belongsTo);
+    console.log(this.post) 
+    console.log("postCard user",this.user) 
   },
   methods: {
     toggleHover(hovered: boolean) {

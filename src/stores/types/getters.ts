@@ -1,5 +1,4 @@
 import _ from "lodash";
-import state from "./state";
 import Post from "../../classes/Post";
 
 const getters = {
@@ -11,7 +10,9 @@ const getters = {
     return posts;
   },
   getUserById: (state: any) => (id: number) => {
-    return _.find(state.users, (user) => user.uid === id);
+    const user = _.find(state.users, (user) => user.uid === id)
+    console.log("getUserById",user,id)
+    return user;
   },
   getPostById: (state: any) => (id: number) => {
     return _.find(state.posts, (post) => post.id === id);

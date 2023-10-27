@@ -50,35 +50,31 @@ export default {
   },
   data() {
     return {
-      stories: [] as User[],
+      stories: this.usersWithStories() as User[],
       activeIndex: 0,
       storiesPerPage: 7,
       fullStory: false,
       selectedStory: {} as Story,
     };
   },
-  created() {
-    this.fullStory = false;
-    this.stories = this.usersWithStories;
-  },
+  created() {},
   computed: {
     displayedStories() {
       const startIndex = this.activeIndex * this.storiesPerPage;
       const endIndex = startIndex + this.storiesPerPage;
       return this.stories.slice(startIndex, endIndex);
     },
+  },
+  methods: {
     usersWithStories() {
       return store.getters.getUsersHavingStories();
     },
-  },
-  methods: {
     openStory(story: Story) {
       this.fullStory = true;
       this.selectedStory = story;
     },
     closeStory() {
       this.fullStory = false;
-
     },
     showNextStories() {
       if (
@@ -95,7 +91,6 @@ export default {
     },
     getStoriesFromUsers(users: User[]) {
       const store = _.flatMap(users, (user) => user.stories);
-      console.log("stories", store);
       return store;
     },
   },

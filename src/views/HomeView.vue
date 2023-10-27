@@ -25,6 +25,7 @@
 import store from "../stores/store";
 import PostCard from "../components/PostCard.vue";
 import StoriesCom from "../components/StoriesCom.vue";
+import Post from "../classes/Post";
 export default {
   name: "HomeView",
   components: {
@@ -33,12 +34,14 @@ export default {
   },
   data() {
     return {
-      posts: store.getters.getPostsByFollowing(),
+      posts: [] as Post[],
     };
   },
   created() {
+    console.log("homeview created", store.state);
+    this.posts = store.getters.getPostsByFollowing;
     store.state.showLoder = true;
-    console.log(this.posts);
+    console.log("showLoder set to true");
   },
   mounted() {
     console.log("homeview mounted");
@@ -46,7 +49,6 @@ export default {
       store.state.showLoder = false;
     }, 200);
   },
-
 };
 </script>
 <style scoped>
