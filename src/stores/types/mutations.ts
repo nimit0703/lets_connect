@@ -1,9 +1,13 @@
+import Post from "@/classes/Post";
 import User from "../../classes/User";
 import _ from "lodash";
 
 const mutations = {
   setUsers(state: any, users: User[]) {
     state.users = users;
+  },
+  setPosts(state:any, posts:Post[]){
+    state.posts = posts;
   },
   likedPost(state: any, postId: number) {
     const likes = _.find(state.posts, (post) => post.id === postId)?.likes;

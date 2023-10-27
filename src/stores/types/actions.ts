@@ -10,6 +10,15 @@ const actions = {
           console.error("Failed to fetch user data:", error);
         }
       },
+    async fetchPostData({ commit }: { commit: Commit }){
+        try {
+          const response = await fetch("src/stores/data/posts.json");
+          const data = await response.json();
+          commit("setPosts", data);
+        } catch (error) {
+          console.error("Failed to fetch user data:", error);
+        }
+      },
 };
 
 export default actions;
