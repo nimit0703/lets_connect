@@ -3,8 +3,7 @@
     <div
       class="left-story bg-transparent p-4"
       @click="showPreviousStory"
-      disabled
-      :class="{ disabled: currentStoryIndex === 1 }"
+      :disabled="currentStoryIndex === minStoryId"
     >
       <i class="bi bi-caret-left-fill bg-transparent"></i>
     </div>
@@ -20,7 +19,7 @@
     <div
       class="right-story bg-transparent p-4"
       @click="showNextStory"
-      :disabled="currentStoryIndex === stories.length - 1"
+      :disabled="currentStoryIndex === maxStoryId"
     >
       <i class="bi bi-caret-right-fill bg-transparent"></i>
     </div>
@@ -52,26 +51,29 @@ export default {
     const minStoryId = Math.min(...storyIds);
     const maxStoryId = Math.max(...storyIds);
     return {
-      currentStoryIndex: minStoryId,
+      currentStoryIndex: this.selectedStory.sid,
       minStoryId,
       maxStoryId,
+      storyIds :storyIds
     };
   },
 
   created() {
     console.log("storiesGrop prop: stories", this.stories);
     console.log("storiesGrop prop: selectedStory", this.selectedStory);
-    // this.currentStoryIndex = this.selectedStory.sid;
+    this.currentStoryIndex = this.selectedStory.sid;
   },
   methods: {
     showPreviousStory() {
-      if (this.currentStoryIndex! > this.minStoryId) {
-        this.currentStoryIndex!--;
+      let currentIndex = this.storyIds.indexOf(this.currentStoryIndex);
+      if (currentIndex > 0) {
+        this.currentStoryIndex = this.storyIds[currentIndex - 1];
       }
     },
     showNextStory() {
-      if (this.currentStoryIndex < this.maxStoryId) {
-        this.currentStoryIndex!++;
+      let currentIndex = this.storyIds.indexOf(this.currentStoryIndex);
+      if (currentIndex < this.storyIds.length - 1) {
+        this.currentStoryIndex = this.storyIds[currentIndex + 1];
       }
     },
     closeModal() {
@@ -80,30 +82,19 @@ export default {
   },
   computed: {
     activeStory(): Story | null {
-      if (_.isUndefined(this.currentStoryIndex)) {
-        this.currentStoryIndex = this.selectedStory.sid;
-      }
-      const st = _.find(
-        this.stories,
-        (story) => story.sid == this.currentStoryIndex
-      );
-      return st || null;
+      return this.stories.find((story) => story.sid === this.currentStoryIndex) || null;
     },
-    userData(): User {
-      if (_.isUndefined(this.currentStoryIndex)) {
-        this.currentStoryIndex = this.selectedStory.sid;
+    userData(): User | null {
+      const activeStory = this.activeStory;
+      if (activeStory) {
+        return store.getters.getUserById(activeStory.belongTo);
       }
-      const st = _.find(
-        this.stories,
-        (story) => story.sid == this.currentStoryIndex
-      );
-      const user = store.getters.getUserById(st?.belongTo);
-
-      return user;
+      return null;
     },
   },
 };
 </script>
+
 
 <style scoped>
 .cancel-button {

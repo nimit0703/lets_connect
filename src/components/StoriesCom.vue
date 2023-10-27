@@ -1,11 +1,14 @@
 <template>
   <div class="">
-    <StoriesGroup
-      v-show="fullStory"
-      :stories="getStoriesFromUsers(stories)"
-      :selectedStory="selectedStory"
-      @close="closeStory"
-    ></StoriesGroup>
+    <template v-if="fullStory">
+      <div>
+        <StoriesGroup
+          :stories="getStoriesFromUsers(stories)"
+          :selectedStory="getSelectedStory"
+          @close="closeStory"
+        ></StoriesGroup>
+      </div>
+    </template>
     <div class="story-container">
       <button @click="showPreviousStories" class="story-button">
         <i class="bi bi-caret-left-fill"></i>
@@ -64,15 +67,20 @@ export default {
       const endIndex = startIndex + this.storiesPerPage;
       return this.stories.slice(startIndex, endIndex);
     },
+    getSelectedStory(): Story {
+      return this.selectedStory;
+    },
   },
   methods: {
     usersWithStories() {
       return store.getters.getUsersHavingStories();
     },
+
     openStory(story: Story) {
-      this.fullStory = true;
       this.selectedStory = story;
+      this.fullStory = true;
     },
+
     closeStory() {
       this.fullStory = false;
     },
@@ -90,8 +98,12 @@ export default {
       }
     },
     getStoriesFromUsers(users: User[]) {
-      const store = _.flatMap(users, (user) => user.stories);
-      return store;
+      const stories = _.flatMap(users, (user) => user.stories);
+      const filteredStore = stories.filter(
+        (story: Story) => story.belongTo !== store.state.thisUser.uid
+      );
+
+      return filteredStore;
     },
   },
 };
