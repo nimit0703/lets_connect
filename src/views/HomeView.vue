@@ -53,6 +53,6 @@ export default {
 </script>
 <style scoped>
 .m-stories {
-  margin: 10px 6% !important;
+  margin: 10px 0 !important;
 }
 </style>
