@@ -86,6 +86,8 @@ export default {
       const currentUserId = this.userIds[this.currentUserIndex];
       this.currentStoriesByUserId = this.getUserStories(currentUserId);
       this.currentStoryIndex = 0;
+      this.activeStoryIndex = this.currentStoryIndex; 
+
     },
     changeActiveStory(index: number) {
       this.activeStoryIndex = index;
@@ -150,8 +152,6 @@ export default {
 .user-story-tabs {
   display: flex;
   justify-content: space-between;
-  /* background-color: red;
-  border: 1px solid red; */
   height: 10px;
   margin-bottom: 10px;
   width: 27vw;
@@ -159,22 +159,21 @@ export default {
 
 .stick-container {
   display: flex;
-  width: 27vw;
   background: transparent;
   flex: 1;
 }
 .active-stick {
   height: 5px;
-  background-color: rgb(122, 5, 5);
-  border: 2px solid rgb(35, 35, 35);
+  border: 2px solid rgb(28, 28, 28);
   padding: 5px;
   flex: 1;
 }
 .stick {
   height: 5px;
-  background-color: rgba(128, 128, 128, 0.495);
-  padding: 5px;
+  background-color: rgba(48, 48, 48, 0.6);
+  padding: 5px 10px;
   flex: 10;
+  margin-right: 4px;
 }
 .cancel-button {
   position: absolute;

@@ -7,3 +7,6 @@
 -> then add previouse and next story or heighlight/story component in storeisGrouptT
 
 -> use backend for data fatching
+
+::bugs::
+->user having single story is not opening
