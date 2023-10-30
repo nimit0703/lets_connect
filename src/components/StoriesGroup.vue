@@ -1,26 +1,39 @@
 <template>
   <div class="fixed-bg">
-    <div
-      class="left-story bg-transparent p-4"
-      @click="showPreviousStory"
-      :disabled="currentStoryIndex === minStoryId"
-    >
+    <div class="left-story bg-transparent p-4" @click="showPreviousStory">
+      <!-- :disabled="currentStoryIndex === minStoryId" -->
       <i class="bi bi-caret-left-fill bg-transparent"></i>
     </div>
     <div class="individual-story-container shadow">
       <div class="story">
         <div class="profile-data">
-          <img :src="userData?.profile_img" alt="" />
-          <p>{{ userData?.userName }}</p>
+          <div class="d-flex flex-column bg-transparent">
+            <div class="user-story-tabs bg-transparent">
+              <div class="stick-container">
+                <div
+                  v-for="(story, index) in currentStoriesByUserId"
+                  :key="story.sid"
+                  @click="changeActiveStory(index)"
+                  class="stick"
+                  :class="{
+                    'active-tab': index === activeStoryIndex,
+                    'active-stick': index === activeStoryIndex,
+                  }"
+                ></div>
+              </div>
+            </div>
+
+            <div class="d-flex bg-transparent">
+              <img :src="userData?.profile_img" alt="" />
+              <p>{{ userData?.userName }}</p>
+            </div>
+          </div>
         </div>
         <img :src="activeStory?.content" alt="" class="main-img" />
       </div>
     </div>
-    <div
-      class="right-story bg-transparent p-4"
-      @click="showNextStory"
-      :disabled="currentStoryIndex === maxStoryId"
-    >
+    <div class="right-story bg-transparent p-4" @click="showNextStory">
+      <!-- :disabled="currentStoryIndex === maxStoryId" -->
       <i class="bi bi-caret-right-fill bg-transparent"></i>
     </div>
     <button @click="closeModal" class="cancel-button">
@@ -34,6 +47,7 @@ import _ from "lodash";
 import Story from "../classes/Story";
 import store from "../stores/store";
 import User from "../classes/User";
+import { TransitionGroup } from "vue";
 
 export default {
   props: {
@@ -41,49 +55,86 @@ export default {
       type: Array as () => Story[],
       required: true,
     },
-    selectedStory: {
-      type: Story,
+    userId: {
+      type: Number,
       required: true,
     },
   },
   data() {
     const storyIds = this.stories.map((story) => story.sid);
-    const minStoryId = Math.min(...storyIds);
-    const maxStoryId = Math.max(...storyIds);
+    const userIds = this.stories.map((story) => story.belongTo);
     return {
-      currentStoryIndex: this.selectedStory.sid,
-      minStoryId,
-      maxStoryId,
-      storyIds :storyIds
+      currentStoriesByUserId: this.getUserStories(this.userId) as Story[],
+      currentStoryIndex: 0,
+      activeStoryIndex: 0,
+
+      storyIds: storyIds,
+      userIds: userIds,
+      currentUserIndex: 0,
     };
   },
 
   created() {
+    // debugger
     console.log("storiesGrop prop: stories", this.stories);
-    console.log("storiesGrop prop: selectedStory", this.selectedStory);
-    this.currentStoryIndex = this.selectedStory.sid;
+    console.log("storiesGrop prop: selectedStory", this.userId);
+    this.currentUserIndex = this.userId;
+    this.setUserStories(); // Initialize currentStoriesByUserId
   },
   methods: {
+    setUserStories() {
+      const currentUserId = this.userIds[this.currentUserIndex];
+      this.currentStoriesByUserId = this.getUserStories(currentUserId);
+      this.currentStoryIndex = 0;
+    },
+    changeActiveStory(index: number) {
+      this.activeStoryIndex = index;
+      this.currentStoryIndex = this.currentStoriesByUserId[index].sid;
+    },
     showPreviousStory() {
-      let currentIndex = this.storyIds.indexOf(this.currentStoryIndex);
+      let currentIndex = this.currentStoryIndex;
       if (currentIndex > 0) {
-        this.currentStoryIndex = this.storyIds[currentIndex - 1];
+        this.currentStoryIndex -= 1;
+        this.activeStoryIndex = this.currentStoryIndex; 
+      } else {
+        this.showPreviousUserStories();
       }
     },
     showNextStory() {
-      let currentIndex = this.storyIds.indexOf(this.currentStoryIndex);
-      if (currentIndex < this.storyIds.length - 1) {
-        this.currentStoryIndex = this.storyIds[currentIndex + 1];
+      // debugger;
+      let currentIndex = this.currentStoryIndex;
+      let maxStoriesByuser = this.currentStoriesByUserId.length;
+      if (currentIndex < maxStoriesByuser - 1) {
+        this.currentStoryIndex += 1;
+        this.activeStoryIndex = this.currentStoryIndex; 
+      } else {
+        this.showNextUserStories();
+      }
+    },
+    showPreviousUserStories() {
+      if (this.currentUserIndex > 0) {
+        this.currentUserIndex--;
+        this.setUserStories();
+      }
+    },
+    showNextUserStories() {
+      if (this.currentUserIndex < this.userIds.length - 1) {
+        this.currentUserIndex++;
+        this.setUserStories();
       }
     },
     closeModal() {
       this.$emit("close");
     },
+    getUserStories(id: number) {
+      return store.getters.getStoriesFromUserId(id);
+    },
   },
   computed: {
     activeStory(): Story | null {
-      return this.stories.find((story) => story.sid === this.currentStoryIndex) || null;
+      return this.currentStoriesByUserId[this.currentStoryIndex] || null;
     },
+
     userData(): User | null {
       const activeStory = this.activeStory;
       if (activeStory) {
@@ -95,8 +146,36 @@ export default {
 };
 </script>
 
-
 <style scoped>
+.user-story-tabs {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: red;
+  border: 1px solid red; */
+  height: 10px;
+  margin-bottom: 10px;
+  width: 27vw;
+}
+
+.stick-container {
+  display: flex;
+  width: 27vw;
+  background: transparent;
+  flex: 1;
+}
+.active-stick {
+  height: 5px;
+  background-color: rgb(122, 5, 5);
+  border: 2px solid rgb(35, 35, 35);
+  padding: 5px;
+  flex: 1;
+}
+.stick {
+  height: 5px;
+  background-color: rgba(128, 128, 128, 0.495);
+  padding: 5px;
+  flex: 10;
+}
 .cancel-button {
   position: absolute;
 

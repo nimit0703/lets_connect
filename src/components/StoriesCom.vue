@@ -2,9 +2,10 @@
   <div class="">
     <template v-if="fullStory">
       <div>
+
         <StoriesGroup
           :stories="getStoriesFromUsers(stories)"
-          :selectedStory="getSelectedStory"
+          :userId="getUserIdFromSelectedStory"
           @close="closeStory"
         ></StoriesGroup>
       </div>
@@ -67,8 +68,8 @@ export default {
       const endIndex = startIndex + this.storiesPerPage;
       return this.stories.slice(startIndex, endIndex);
     },
-    getSelectedStory(): Story {
-      return this.selectedStory;
+    getUserIdFromSelectedStory(): number {
+      return this.selectedStory.belongTo;
     },
   },
   methods: {
