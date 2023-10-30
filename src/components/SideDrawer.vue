@@ -1,7 +1,9 @@
 <template>
   <div class="sidedrawer">
     <div class="img-logo">
-      <i class="bi bi-instagram" style="font-size: 2rem"></i>
+      <router-link to="/home" class="icon-link">
+        <i class="bi bi-instagram" style="font-size: 2rem"></i>
+      </router-link>
     </div>
     <div class="icons d-flex flex-column options">
       <div class="d-flex" @click="closeSidebar">
@@ -9,7 +11,7 @@
           <i class="bi bi-house-door-fill"></i>
         </router-link>
       </div>
-      <div class="d-flex" >
+      <div class="d-flex">
         <router-link to="search" class="icon-link">
           <i class="bi bi-search"></i>
         </router-link>
@@ -60,9 +62,9 @@ export default {
     };
   },
   methods: {
-    closeSidebar(){
-        this.$emit("close");
-    }
+    closeSidebar() {
+      this.$emit("close");
+    },
   },
 };
 </script>
