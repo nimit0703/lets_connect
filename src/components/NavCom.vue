@@ -9,11 +9,13 @@
       </template>
       <template v-else>
         <div class="img-logo">
+          <router-link to="/home" class="icon-link">
           <img
             src="../assets/insta_logo.png.png"
             alt=""
             class="img-fluid insta-logo"
           />
+          </router-link>
         </div>
         <div class="icons d-flex flex-column ps-4">
           <div class="d-flex">
