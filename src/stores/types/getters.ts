@@ -1,5 +1,8 @@
 import _ from "lodash";
 import Post from "../../classes/Post";
+import state from "./state";
+import store from "../store";
+import User from "../../classes/User";
 
 const getters = {
   getPostsByFollowing: (state: any) => {
@@ -43,6 +46,10 @@ const getters = {
   getPostsById: (state: any) => (id: number) => {
     return _.filter(state.posts, (post: Post) => post.belongsTo === id);
   },
+  getStoriesFromUserId :(state:any)=>(id :number)=>{
+    const user:User = store.getters.getUserById(id);
+    return user.stories;
+  }
 };
 
 // comment added
