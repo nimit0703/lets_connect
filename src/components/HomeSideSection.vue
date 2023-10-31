@@ -3,9 +3,10 @@
     <!-- showing current user -->
     <SmallUserProfile :id="1"></SmallUserProfile>
     <div class="tags">
-      <p>Suggested for you</p>
-      <p>see all</p>
+        <p>Suggested for you</p>
+        <p>see all</p>
     </div>
+    <SmallUserProfile v-for="suggest in suggestedUsers" :key="suggest" :id="suggest" class="mb-2"></SmallUserProfile>
   </div>
 </template>
 <script lang="ts">
@@ -16,7 +17,7 @@ export default {
   },
   data() {
     return {
-        suggestedUsers:[4,5,6,7,8]
+        suggestedUsers:[32,31,30,4]
     }
   },
   components: { SmallUserProfile },
