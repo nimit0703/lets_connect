@@ -62,7 +62,9 @@ export default {
   },
   data() {
     const storyIds = this.stories.map((story) => story.sid);
-    const userIds = this.stories.map((story) => story.belongTo);
+    let userIds = this.stories.map((story) => story.belongTo);
+    userIds = [...new Set(userIds)];
+
     return {
       currentStoriesByUserId: this.getUserStories(this.userId) as Story[],
       currentStoryIndex: 0,
@@ -78,7 +80,7 @@ export default {
     // debugger
     console.log("storiesGrop prop: stories", this.stories);
     console.log("storiesGrop prop: selectedStory", this.userId);
-    this.currentUserIndex = this.userId;
+    this.currentUserIndex = _.findIndex(this.userIds,(id)=>id===this.userId);
     this.setUserStories(); // Initialize currentStoriesByUserId
   },
   methods: {
