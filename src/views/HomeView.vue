@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex align-items-stretch m-0">
-      <div class="d-flex flex-column" style="flex: 4">
+      <div class="d-flex flex-column">
         <div class="storySection postSection d-flex flex-column ps-5 m-stories">
           <StoriesCom></StoriesCom>
         </div>
@@ -14,8 +14,8 @@
           ></PostCard>
         </div>
       </div>
-      <div class="right-sec border-start border-secondary" style="flex: 1">
-        <h1>sideSection</h1>
+      <div class="right-sec border-start border-secondary">
+        <HomeSideSection />
       </div>
     </div>
   </div>
@@ -25,12 +25,14 @@
 import store from "../stores/store";
 import PostCard from "../components/PostCard.vue";
 import StoriesCom from "../components/StoriesCom.vue";
+import HomeSideSection from "../components/HomeSideSection.vue";
 import Post from "../classes/Post";
 export default {
   name: "HomeView",
   components: {
     PostCard,
     StoriesCom,
+    HomeSideSection,
   },
   data() {
     return {

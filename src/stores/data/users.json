@@ -1,7 +1,7 @@
 [
   {
     "uid": 1,
-    "userName": "Nimit Trevadiya",
+    "userName": "nimit_trevadiya",
     "colorTheme": "dark",
     "email": "nimit@insta.com",
     "password": "ab",
@@ -15,7 +15,8 @@
         "belongTo": 1,
         "content": "https://picsum.photos/id/59/1080"
       }
-    ]
+    ],
+    "name": "Nimit Trevadiya"
   },
   {
     "uid": 2,
