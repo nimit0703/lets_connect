@@ -1,11 +1,14 @@
 <template>
   <div class="">
-    <StoriesGroup
-      v-show="fullStory"
-      :stories="highlights"
-      :selectedStory="selectedHighlight"
-      @close="closeStory"
-    ></StoriesGroup>
+    <template v-if="fullStory">
+      <div class="">
+        <StoriesGroup
+          :stories="highlights"
+          :userId="getUserIdFromSelectedStory"
+          @close="closeStory"
+        ></StoriesGroup>
+      </div>
+    </template>
     <div class="d-flex">
       <div
         class="dflex flex-column justify-content-center align-items-center me-4"
@@ -36,35 +39,42 @@
 </template>
 
 <script lang="ts">
+import store from "../stores/store";
 import Story from "../classes/Story";
 import StoriesGroup from "./StoriesGroup.vue";
 
 export default {
-    props: {
-        highlights: {
-            type: Array as () => Story[],
-            required: true,
-        },
+  props: {
+    highlights: {
+      type: Array as () => Story[],
+      required: true,
     },
-    component: {
-        StoriesGroup,
+  },
+  component: {
+    StoriesGroup,
+  },
+  data() {
+    return {
+      highlight: store.state.thisUser.stories,
+      fullStory: false,
+      selectedHighlight: {} as Story,
+    };
+  },
+  methods: {
+    openHighlight(story: Story) {
+      this.selectedHighlight = story;
+      this.fullStory = true;
     },
-    data() {
-        return {
-            fullStory: false,
-            selectedHighlight: {} as Story,
-        };
+    closeStory() {
+      this.fullStory = false;
     },
-    methods: {
-        openHighlight(story: Story) {
-            this.fullStory = true;
-            this.selectedHighlight = story;
-        },
-        closeStory() {
-            this.fullStory = false;
-        },
+  },
+  computed: {
+    getUserIdFromSelectedStory(): number {
+      return this.selectedHighlight.belongTo;
     },
-    components: { StoriesGroup }
+  },
+  components: { StoriesGroup },
 };
 </script>
 
