@@ -3,7 +3,7 @@
     <template v-if="fullStory">
       <div class="">
         <StoriesGroup
-          :stories="highlights"
+          :stories="getAllHighlightedStories"
           :userId="getUserIdFromSelectedStory"
           :type="'highlight'"
           @close="closeStory"
@@ -13,16 +13,16 @@
     <div class="d-flex">
       <div
         class="dflex flex-column justify-content-center align-items-center me-4"
-        v-for="hl in highlights"
-        @click="openHighlight(hl)"
-      >
+        v-for="highlight in highlights"
+        @click="openHighlight(highlight)"
+        >
         <div
           class="highlight-border border border-secondary border-hover-primary d-flex justify-content-center align-items-center"
         >
-          <img :src="hl.content" alt="" class="img-fluid highlight-img" />
+          <img :src="highlight.hl[0].content" alt="" class="img-fluid highlight-img" />
         </div>
         <div class="mt-2">
-          <p class="m-0 text-center">{{ hl.sid }}</p>
+          <p class="m-0 text-center">{{ highlight.title }}</p>
         </div>
       </div>
       <div class="dflex flex-column justify-content-center align-items-center">
@@ -43,11 +43,12 @@
 import store from "../stores/store";
 import Story from "../classes/Story";
 import StoriesGroup from "./StoriesGroup.vue";
+import Highlight from "../classes/Highlight";
 
 export default {
   props: {
     highlights: {
-      type: Array as () => Story[],
+      type: Array as () => Highlight[],
       required: true,
     },
   },
@@ -58,12 +59,12 @@ export default {
     return {
       highlight: store.state.thisUser.stories,
       fullStory: false,
-      selectedHighlight: {} as Story,
+      selectedHighlight: {} as Highlight,
     };
   },
   methods: {
-    openHighlight(story: Story) {
-      this.selectedHighlight = story;
+    openHighlight(highlight:Highlight) {
+      this.selectedHighlight = highlight;
       this.fullStory = true;
     },
     closeStory() {
@@ -72,8 +73,11 @@ export default {
   },
   computed: {
     getUserIdFromSelectedStory(): number {
-      return this.selectedHighlight.belongTo;
+      return this.selectedHighlight.belongsTo;
     },
+    getAllHighlightedStories():Story[]{
+      return []
+    }
   },
   components: { StoriesGroup },
 };

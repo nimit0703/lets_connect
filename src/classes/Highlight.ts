@@ -1,15 +1,17 @@
 import Story from "./Story";
 
 export default class Highlight {
-  static hid: number = 0;
+  hid: number;
+  title: string;
   createdDate: Date;
   hl: Story[];
   belongsTo: number;
 
-  constructor(userId: number, stories: Story[]) {
+  constructor(id:number,userId: number, hlTitle: string, stories: Story[]) {
+    this.hid =id;
     this.belongsTo = userId;
+    this.title = hlTitle;
     this.hl = stories;
-    Highlight.hid++;
     this.createdDate = new Date();
   }
 }
