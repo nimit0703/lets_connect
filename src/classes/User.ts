@@ -1,3 +1,4 @@
+import Highlight from "./Highlight";
 import Story from "./Story";
 
 export default class User {
@@ -12,7 +13,7 @@ export default class User {
   userName :string ;
   hasStories:boolean;
   stories:Story[];
-  highlights:Story[]= [];
+  highlights:Highlight[]=[];
   constructor(
     uid: number,
     name: string,
@@ -37,7 +38,7 @@ export default class User {
     this.hasStories = hasStories;
     this.stories = stories;
   }
-  addNewHighlight(highlight:Story){
+  addNewHighlight(highlight:Highlight){
     this.highlights.push(highlight);
   }
 }

@@ -5,6 +5,7 @@
         <StoriesGroup
           :stories="highlights"
           :userId="getUserIdFromSelectedStory"
+          :type="'highlight'"
           @close="closeStory"
         ></StoriesGroup>
       </div>
