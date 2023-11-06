@@ -59,6 +59,9 @@ export default {
       type: Number,
       required: true,
     },
+    type:{
+      default:"story",
+    }
   },
   data() {
     const storyIds = this.stories.map((story) => story.sid);
@@ -80,6 +83,8 @@ export default {
     // debugger
     console.log("storiesGrop prop: stories", this.stories);
     console.log("storiesGrop prop: selectedStory", this.userId);
+    console.log("storiesGrop prop: type", this.type);
+  
     this.currentUserIndex = _.findIndex(this.userIds,(id)=>id===this.userId);
     this.setUserStories(); // Initialize currentStoriesByUserId
   },

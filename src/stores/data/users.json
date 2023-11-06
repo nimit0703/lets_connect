@@ -16,7 +16,51 @@
         "content": "https://picsum.photos/id/59/1080"
       }
     ],
-    "name": "Nimit Trevadiya"
+    "name": "Nimit Trevadiya",
+    "highlights":[
+      {
+      "hid" :1,
+      "belongsTo" : 1,
+      "title" : "hlTitle",
+      "hl" :[
+        {
+          "sid": 1001,
+          "belongTo": 1,
+          "content": "https://picsum.photos/id/51/1080"
+        },
+        {
+          "sid": 1002,
+          "belongTo": 1,
+          "content": "https://picsum.photos/id/5/1080"
+        },
+        {
+          "sid": 1003,
+          "belongTo": 1,
+          "content": "https://picsum.photos/id/55/1080"
+        }
+      ]
+    },{
+      "hid" :2,
+      "belongsTo" : 1,
+      "title" : "hlTitle",
+      "hl" :[
+        {
+          "sid": 1004,
+          "belongTo": 1,
+          "content": "https://picsum.photos/id/52/1080"
+        },
+        {
+          "sid": 1005,
+          "belongTo": 1,
+          "content": "https://picsum.photos/id/7/1080"
+        },
+        {
+          "sid": 1006,
+          "belongTo": 1,
+          "content": "https://picsum.photos/id/56/1080"
+        }
+      ]
+    }]
   },
   {
     "uid": 2,

@@ -1,18 +1,17 @@
--> create a component openStory
--> create a component storiesGroup
+-> create a component openStory ::Check
+-> create a component storiesGroup ::check
 
 
 
 -> same work for heighlights
--> then add previouse and next story or heighlight/story component in storeisGrouptT
-
+-> :: cancel :: then add previouse and next story or heighlight/story component in storeisGrouptT X 
+-> create new Componet similiar to storiesGroup for openHighlights feature;
 -> use backend for data fatching
 
 ::bugs::
 ->user having single story is not opening
 
 
-
-::issue::
+::issue:: X::Fixed
 -> userPage is not showing due to modification in StoryGroup Component
     -> for heighlights have to restructure code or build differnt component for openHighlights

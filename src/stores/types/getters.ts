@@ -5,6 +5,11 @@ import store from "../store";
 import User from "../../classes/User";
 
 const getters = {
+  getHighlightsByUId:(state:any)=>(id:number)=>{
+    const user:User = _.find(state.users, (user) => user.uid === id);
+    console.log("user: getHighlight",user)
+    return user.highlights;
+  },
   getPostsByFollowing: (state: any) => {
     const followingIds = state.thisUser.following;
     const posts = _.filter(state.posts, (post) =>
