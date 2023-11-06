@@ -65,16 +65,6 @@ export default {
       list: [] as number[],
     };
   },
-  created() {
-    const s1 = new Story(1001,1,"https://picsum.photos/id/1/1080")
-    const s2 = new Story(1002,1,"https://picsum.photos/id/2/1080")
-    const s3 = new Story(1003,1,"https://picsum.photos/id/3/1080")
-    this.user.addNewHighlight(new Highlight(1,1,"Glimps Of 2k22",[s1,s2,s3]));
-    this.user.addNewHighlight(new Highlight(2,1,"Glimps.. Of 2k23",[s3,s1,s2,s1]));
-  },
-  beforeUnmount(){
-    this.user.highlights=[];
-  },
   computed: {
     showList(): boolean {
       return this.showList;
