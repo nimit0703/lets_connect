@@ -2,12 +2,7 @@
   <div class="">
     <template v-if="fullStory">
       <div class="">
-        <StoriesGroup
-          :stories="getAllHighlightedStories"
-          :userId="getUserIdFromSelectedStory"
-          :type="'highlight'"
-          @close="closeStory"
-        ></StoriesGroup>
+        <OpenHighlight :hid="selectedHID" @close="closeStory"></OpenHighlight>
       </div>
     </template>
     <div class="d-flex">
@@ -15,11 +10,15 @@
         class="dflex flex-column justify-content-center align-items-center me-4"
         v-for="highlight in highlights"
         @click="openHighlight(highlight)"
-        >
+      >
         <div
           class="highlight-border border border-secondary border-hover-primary d-flex justify-content-center align-items-center"
         >
-          <img :src="highlight.hl[0].content" alt="" class="img-fluid highlight-img" />
+          <img
+            :src="highlight.hl[0].content"
+            alt=""
+            class="img-fluid highlight-img"
+          />
         </div>
         <div class="mt-2">
           <p class="m-0 text-center">{{ highlight.title }}</p>
@@ -42,7 +41,7 @@
 <script lang="ts">
 import store from "../stores/store";
 import Story from "../classes/Story";
-import StoriesGroup from "./StoriesGroup.vue";
+import OpenHighlight from "./OpenHighlight.vue";
 import Highlight from "../classes/Highlight";
 
 export default {
@@ -52,8 +51,8 @@ export default {
       required: true,
     },
   },
-  component: {
-    StoriesGroup,
+  components: {
+    OpenHighlight,
   },
   data() {
     return {
@@ -63,7 +62,7 @@ export default {
     };
   },
   methods: {
-    openHighlight(highlight:Highlight) {
+    openHighlight(highlight: Highlight) {
       this.selectedHighlight = highlight;
       this.fullStory = true;
     },
@@ -72,14 +71,16 @@ export default {
     },
   },
   computed: {
+    selectedHID() {
+      return this.selectedHighlight.hid;
+    },
     getUserIdFromSelectedStory(): number {
       return this.selectedHighlight.belongsTo;
     },
-    getAllHighlightedStories():Story[]{
-      return []
-    }
+    getAllHighlightedStories(): Story[] {
+      return [];
+    },
   },
-  components: { StoriesGroup },
 };
 </script>
 
