@@ -1,0 +1,8 @@
+::bugs::
+---------------------------------Pending-------------------------------
+
+-> toggling between user's story not working 
+-> saved and Tagged is not working as well (bulding logis is also pending)
+
+---------------------------------Resolved-------------------------------
+-> user having single story is not opening :: Resolve

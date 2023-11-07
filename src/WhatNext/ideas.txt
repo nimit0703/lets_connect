@@ -1,0 +1,15 @@
+---------------------------------Pending-------------------------------
+-> use backend for data fatching
+-> add components for map(w'll use in location feature )
+-> re-design components structures 
+
+---------------------------------Implemented-------------------------------
+
+-> create a component openStory ::Check
+-> create a component storiesGroup ::check
+-> same work for heighlights :: Check
+-> create new Componet similiar to storiesGroup for openHighlights feature; :: Check
+
+---------------------------------Canceled-------------------------------
+
+-> :: cancel :: then add previouse and next story or heighlight/story component in storeisGrouptT X 

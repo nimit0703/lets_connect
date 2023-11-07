@@ -1,0 +1,9 @@
+::issues:: 
+---------------------------------Pending-------------------------------
+
+
+
+
+---------------------------------Resolved-------------------------------
+-> userPage is not showing due to modification in StoryGroup Component
+-> for heighlights have to restructure code or build differnt component for openHighlights
