@@ -11,7 +11,7 @@
             <div class="user-story-tabs bg-transparent">
               <div class="stick-container">
                 <div
-                  v-for="(story, index) in stories"
+                  v-for="(story, index) in currentStoriesByUserId"
                   :key="story.sid"
                   @click="changeActiveStory(index)"
                   class="stick"
@@ -43,72 +43,118 @@
 </template>
 
 <script lang="ts">
-import Highlight from "@/classes/Highlight";
-import store from "../stores/store";
-import Story from "../classes/Story";
 import _ from "lodash";
+import Story from "../../classes/Story";
+import store from "../../stores/store";
+import User from "../../classes/User";
+import { TransitionGroup } from "vue";
 
 export default {
   props: {
-    hid: {
-      type: Number,
+    stories: {
+      type: Array as () => Story[],
       required: true,
     },
     userId: {
       type: Number,
-      default: store.state.thisUser.uid,
+      required: true,
     },
+    type:{
+      default:"story",
+    }
   },
   data() {
+    const storyIds = this.stories.map((story) => story.sid);
+    let userIds = this.stories.map((story) => story.belongTo);
+    userIds = [...new Set(userIds)];
+
     return {
-      highlights: this.getHighlights(),
-      stories: [] as Story[],
+      currentStoriesByUserId: this.getUserStories(this.userId) as Story[],
+      currentStoryIndex: 0,
       activeStoryIndex: 0,
-      userData: store.getters.getUserById(this.userId),
+
+      storyIds: storyIds,
+      userIds: userIds,
+      currentUserIndex: 0,
     };
   },
+
   created() {
-    console.log("HighLight open created", this.highlights);
-    console.log("HighLight open Prop:Hid", this.hid);
-    console.log("HighLight open Prop:userId", this.userId);
-    var hl: Highlight = _.find(this.highlights, (hl) => hl.hid === this.hid)!;
-    this.stories = hl.hl;
-    console.log(this.stories);
-    this.setActiveStory();
-  },
-  computed: {
-    activeStory(): Story {
-      return this.stories[this.activeStoryIndex];
-    },
+    // debugger
+    console.log("storiesGrop prop: stories", this.stories);
+    console.log("storiesGrop prop: selectedStory", this.userId);
+    console.log("storiesGrop prop: type", this.type);
+  
+    this.currentUserIndex = _.findIndex(this.userIds,(id)=>id===this.userId);
+    this.setUserStories(); // Initialize currentStoriesByUserId
   },
   methods: {
+    setUserStories() {
+      const currentUserId = this.userIds[this.currentUserIndex];
+      this.currentStoriesByUserId = this.getUserStories(currentUserId);
+      this.currentStoryIndex = 0;
+      this.activeStoryIndex = this.currentStoryIndex; 
+
+    },
     changeActiveStory(index: number) {
       this.activeStoryIndex = index;
+      this.currentStoryIndex = this.currentStoriesByUserId[index].sid;
     },
     showPreviousStory() {
-      if (this.activeStoryIndex <= 0) {
-        this.closeModal();
-        return;
+      let currentIndex = this.currentStoryIndex;
+      if (currentIndex > 0) {
+        this.currentStoryIndex -= 1;
+        this.activeStoryIndex = this.currentStoryIndex; 
+      } else {
+        this.showPreviousUserStories();
       }
-      this.activeStoryIndex--;
     },
     showNextStory() {
-      if (this.activeStoryIndex >= this.stories.length -1) {
-        this.closeModal();
-        return;
+      // debugger;
+      let currentIndex = this.currentStoryIndex;
+      let maxStoriesByuser = this.currentStoriesByUserId.length;
+      if (currentIndex < maxStoriesByuser - 1) {
+        this.currentStoryIndex += 1;
+        this.activeStoryIndex = this.currentStoryIndex; 
+      } else {
+        this.showNextUserStories();
       }
-      this.activeStoryIndex++;
     },
-    setActiveStory() {},
+    showPreviousUserStories() {
+      if (this.currentUserIndex > 0) {
+        this.currentUserIndex--;
+        this.setUserStories();
+      }
+    },
+    showNextUserStories() {
+      if (this.currentUserIndex < this.userIds.length - 1) {
+        this.currentUserIndex++;
+        this.setUserStories();
+      }
+    },
     closeModal() {
       this.$emit("close");
     },
-    getHighlights() {
-      return store.getters.getHighlightsByUId(this.userId);
+    getUserStories(id: number) {
+      return store.getters.getStoriesFromUserId(id);
+    },
+  },
+  computed: {
+    activeStory(): Story | null {
+      return this.currentStoriesByUserId[this.currentStoryIndex] || null;
+    },
+
+    userData(): User | null {
+      const activeStory = this.activeStory;
+      if (activeStory) {
+        return store.getters.getUserById(activeStory.belongTo);
+      }
+      return null;
     },
   },
 };
 </script>
+
 <style scoped>
 .user-story-tabs {
   display: flex;

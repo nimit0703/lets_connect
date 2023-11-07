@@ -23,9 +23,9 @@
 
 <script lang="ts">
 import store from "../stores/store";
-import PostCard from "../components/PostCard.vue";
-import StoriesCom from "../components/StoriesCom.vue";
-import HomeSideSection from "../components/HomeSideSection.vue";
+import PostCard from "../components/common/cards/PostCard.vue";
+import StoriesCom from "../components/story/StoriesCom.vue";
+import HomeSideSection from "../components/pages/home/HomeSideSection.vue";
 import Post from "../classes/Post";
 export default {
   name: "HomeView",

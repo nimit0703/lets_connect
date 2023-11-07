@@ -42,11 +42,11 @@
 
 <script lang="ts">
 import User from "@/interfaces/User";
-import store from "../stores/store";
+import store from "../../stores/store";
 
 import StoriesGroup from "./StoriesGroup.vue";
 import _ from "lodash";
-import Story from "../classes/Story";
+import Story from "../../classes/Story";
 
 export default {
   components: {

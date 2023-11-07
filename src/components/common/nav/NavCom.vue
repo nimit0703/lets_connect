@@ -11,7 +11,7 @@
         <div class="img-logo">
           <router-link to="/home" class="icon-link">
           <img
-            src="../assets/insta_logo.png.png"
+            src="../../../assets/insta_logo.png.png"
             alt=""
             class="img-fluid insta-logo"
           />
@@ -68,10 +68,9 @@
   </div>
 </template>
 <script lang="ts">
-import User from "../interfaces/User";
-import store from "../stores/store";
-import SideDrawer from "./SideDrawer.vue";
-
+import store from '../../../stores/store';
+import SideDrawer from '../sidebar/SideDrawer.vue';
+import User from '../../../classes/User';
 export default {
   components: {
     SideDrawer,

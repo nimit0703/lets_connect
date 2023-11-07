@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import store from "../stores/store";
-import SearchCom from "../components/SearchCom.vue";
+import SearchCom from "../components/pages/search/SearchCom.vue";
 
 export default {
   components: {

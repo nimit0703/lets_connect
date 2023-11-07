@@ -47,12 +47,9 @@
 
 <script lang="ts">
 import _ from "lodash";
-import store from "../stores/store";
-import HighlightCom from "./HighlightCom.vue";
-import ListModal from "./ListModal.vue";
-import Story from "../classes/Story";
-import Highlight from "../classes/Highlight";
-
+import store from "../../../stores/store";
+import HighlightCom from "../../Highlight/HighlightCom.vue";
+import ListModal from "../../common/modals/ListModal.vue"
 export default {
   components: {
     HighlightCom,

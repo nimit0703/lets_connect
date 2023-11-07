@@ -16,8 +16,8 @@
   </div>
 </template>
 <script lang="ts">
-import User from "../classes/User";
-import store from "../stores/store";
+import User from "../../classes/User";
+import store from "../../stores/store";
 
 export default {
   props: {

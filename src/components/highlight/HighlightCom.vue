@@ -39,10 +39,10 @@
 </template>
 
 <script lang="ts">
-import store from "../stores/store";
-import Story from "../classes/Story";
+import store from "../../stores/store";
+import Story from "../../classes/Story";
 import OpenHighlight from "./OpenHighlight.vue";
-import Highlight from "../classes/Highlight";
+import Highlight from "../../classes/Highlight";
 
 export default {
   props: {

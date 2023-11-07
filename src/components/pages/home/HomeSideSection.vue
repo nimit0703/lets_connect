@@ -10,7 +10,7 @@
   </div>
 </template>
 <script lang="ts">
-import SmallUserProfile from "./SmallUserProfile.vue";
+import SmallUserProfile from '../../../components/common/SmallUserProfile.vue';
 export default {
   component: {
     SmallUserProfile,

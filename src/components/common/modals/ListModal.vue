@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import store from "../stores/store";
+import store from "../../../stores/store";
 
 export default {
   data() {

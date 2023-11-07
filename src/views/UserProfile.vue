@@ -8,8 +8,8 @@
 </template>
 <script lang="ts">
 import store from "../stores/store";
-import ProfileUserFeed from "../components/ProfileUserFeed.vue";
-import ProfileUserInfo from "../components/ProfileUserInfo.vue";
+import ProfileUserFeed from "../components/pages/profile/ProfileUserFeed.vue";
+import ProfileUserInfo from "../components/pages/profile/ProfileUserInfo.vue";
 export default {
   components: {
     ProfileUserInfo,

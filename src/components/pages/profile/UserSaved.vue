@@ -24,8 +24,8 @@
   
   <script lang="ts">
   import _ from "lodash";
-  import store from "../stores/store";
-  import Post from "../classes/Post";
+  import store from "../../../stores/store";
+
   
   export default {
     computed: {

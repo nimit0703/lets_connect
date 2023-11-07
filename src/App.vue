@@ -16,10 +16,9 @@
 </template>
 
 <script lang="ts">
-import NavCom from "./components/NavCom.vue";
-import Loader from "./components/Loader.vue";
-import store from "./stores/store";
-
+import NavCom from './components/common/nav/NavCom.vue';
+import Loader from './components/loader/Loader.vue';
+import store from './stores/store';
 export default {
   name: "App",
   components: {
