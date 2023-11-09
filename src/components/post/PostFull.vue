@@ -2,9 +2,30 @@
   <div class="fixed-bg">
     <div class="full-post-box">
       <div class="post-sec">
-          <img :src="post.img" alt="" class="img-fluid">
+        <img :src="post.img" alt="" class="img-fluid" />
       </div>
-      <div class="comment-sec"></div>
+      <div class="comment-sec">
+        <div class="caption">
+          <div class="d-flex align-items-center m-3">
+            <div class="img-fluid">
+              <img
+                :src="user.profile_img"
+                alt=""
+                class="user-profile-post border border-warning"
+              />
+            </div>
+            <div class="d-flex">
+              <span>{{ user.userName }} : </span>
+            </div>
+            <div class="d-flex ps-2">
+              <span class="text-white-50">Lorem ipsum dolor sit amet.</span>
+            </div>
+          </div>
+        </div>
+        <div class="comment-sec">
+          <CommentsCard :allComments="allComments"></CommentsCard>
+        </div>
+      </div>
     </div>
     <button @click="closeModal" class="cancel-button">
       <i class="bi bi-x" style="font-size: 1.5rem"></i>
@@ -13,7 +34,11 @@
 </template>
 
 <script lang="ts">
+import Comment from "@/classes/Comment";
+import store from "../..//stores/store";
 import Post from "../../classes/Post";
+import User from "../../classes/User";
+import CommentsCard from "../common/cards/CommentsCard.vue";
 
 export default {
   name: "PostFull",
@@ -22,6 +47,15 @@ export default {
       type: Post,
       required: true,
     },
+  },
+  data() {
+    return {
+      user: store.state.thisUser as User,
+      allComments: this.post.comments as unknown as Comment[],
+    };
+  },
+  components: {
+    CommentsCard,
   },
   created() {
     console.log("FullPost Created", this.post);
@@ -77,5 +111,12 @@ export default {
   top: 5vh;
   background: transparent;
   border: none;
+}
+.user-profile-post {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-top: 11px;
+  margin-right: 10px;
 }
 </style>
