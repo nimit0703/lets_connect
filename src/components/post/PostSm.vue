@@ -1,7 +1,13 @@
 <template>
-    <div class="image-container">
-      <img :src="post.img" alt="Image" class="img-fluid" />
-      <div class="hover-content">
+  <div class="image-container" >
+    <template v-if="showFullPost">
+      <div>
+        <PostFull :post="post" @close="closeStory()"></PostFull>
+      </div>
+    </template>
+    <template v-else>
+      <img :src="post.img" alt="Image" class="img-fluid"  />
+      <div class="hover-content" @click="OpenFullPost()">
         <div class="data">
           <div class="ps-2 pt-2 bg-transparent">
             <i class="bi-heart-fill bg-transparent"></i>
@@ -17,12 +23,14 @@
           </div>
         </div>
       </div>
-    </div>
+    </template>
+  </div>
 </template>
 
 <script lang="ts">
 import _ from "lodash";
 import Post from "../../classes/Post";
+import PostFull from "./PostFull.vue";
 
 export default {
   props: {
@@ -31,12 +39,28 @@ export default {
       required: true,
     },
   },
+  components: {
+    PostFull,
+  },
+  data() {
+    return {
+      showFullPost: false,
+    };
+  },
   methods: {
     likes(thisPost: Post) {
       return _.size(thisPost.likes);
     },
     comments(thisPost: Post) {
       return _.size(thisPost.comments);
+    },
+    OpenFullPost() {
+      console.log("clicked");
+      this.showFullPost = true;
+    },
+    closeStory() {
+      this.showFullPost = false;
+      console.log("closestory called",this.showFullPost);
     },
   },
 };

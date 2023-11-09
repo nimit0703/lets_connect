@@ -19,7 +19,7 @@ export default {
     PostSm,
   },
   computed: {
-    posts() {
+    posts():Post[] {
       return store.getters.getPostsById(4);
     },
   },
