@@ -62,12 +62,6 @@ export default {
       list: [] as number[],
     };
   },
-  created() {
-    
-  },
-  beforeUnmount(){
-    this.user.highlights=[];
-  },
   computed: {
     showList(): boolean {
       return this.showList;
