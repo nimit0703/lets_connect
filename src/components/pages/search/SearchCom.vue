@@ -48,7 +48,7 @@
 </template>
 
 <script lang="ts">
-import User from "@/classes/User";
+import User from "../../../classes/User";
 import store from "../../../stores/store";
 
 export default {
@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     allusers() {
-      return store.state.users;
+      return store.state.users  as User[];
     },
     filteredList() {
       if (!this.searchTerm) {

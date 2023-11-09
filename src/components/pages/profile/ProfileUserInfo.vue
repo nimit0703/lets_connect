@@ -48,7 +48,7 @@
 <script lang="ts">
 import _ from "lodash";
 import store from "../../../stores/store";
-import HighlightCom from "../../Highlight/HighlightCom.vue";
+import HighlightCom from "../../highlight/HighlightCom.vue";
 import ListModal from "../../common/modals/ListModal.vue"
 export default {
   components: {
