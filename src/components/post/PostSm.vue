@@ -1,26 +1,34 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="col-md-4" v-for="post in posts" :key="post.id">
-        <PostSm :post="post"/>
+    <div class="image-container">
+      <img :src="post.img" alt="Image" class="img-fluid" />
+      <div class="hover-content">
+        <div class="data">
+          <div class="ps-2 pt-2 bg-transparent">
+            <i class="bi-heart-fill bg-transparent"></i>
+            <span style="margin: 15px 10px" class="bg-transparent">
+              {{ likes(post) }}</span
+            >
+          </div>
+          <div class="ps-2 pt-2 bg-transparent">
+            <i class="bi bi-chat-fill bg-transparent"></i>
+            <span style="margin: 15px 10px" class="bg-transparent">
+              {{ comments(post) }}</span
+            >
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
 import _ from "lodash";
-import store from "../../../stores/store";
-import Post from "../../../classes/Post";
-import PostSm from "../../post/PostSm.vue";
+import Post from "../../classes/Post";
 
 export default {
-  components: {
-    PostSm,
-  },
-  computed: {
-    posts() {
-      return store.getters.getMypost();
+  props: {
+    post: {
+      type: Post,
+      required: true,
     },
   },
   methods: {
@@ -33,7 +41,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .row {
   --bs-gutter-x: 0.5rem;
@@ -73,7 +80,6 @@ export default {
   font-size: 16px;
   background-color: rgba(0, 0, 0, 0.272);
 }
-
 
 i {
   font-size: 24px;
