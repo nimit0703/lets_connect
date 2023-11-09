@@ -58,13 +58,12 @@ export default {
     CommentsCard,
   },
   created() {
-    console.log("FullPost Created", this.post);
     document.body.style.overflow = "hidden";
   },
-  beforeDestroy() {
-    console.log("FullPost destroyed", this.post);
+  unmounted() {
     document.body.style.overflow = "";
   },
+  
   methods: {
     closeModal() {
       this.$emit("close");
@@ -86,12 +85,14 @@ export default {
   align-items: center;
   z-index: 999;
   overflow-y: hidden;
+  backdrop-filter: blur(10px); /* Adjust the blur value as needed */
+
 }
 .full-post-box {
   width: 75vw;
   background-color: rgb(0, 0, 0);
   height: 90vh;
-  box-shadow: 0 0 10px rgba(235, 235, 235, 0.2); /* Adjust the values as needed */
+  box-shadow: 0 0 10px rgba(235, 235, 235, 0.2); 
   display: flex;
 }
 .post-sec {
@@ -101,9 +102,9 @@ export default {
   flex: 1;
 }
 .post-sec img {
-  width: 100%; /* Take up full width of parent */
-  height: 100%; /* Take up full height of parent */
-  object-fit: cover; /* Ensure the image covers the entire container */
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
 }
 .cancel-button {
   position: absolute;
