@@ -3,7 +3,7 @@ import Story from "./Story";
 export default class Comment {
   text: String;
   belongTo: number;
-  likedBy: [number];
+  likes: [number];
   threads: [Comment] | null = null;
 
   constructor(
@@ -14,7 +14,7 @@ export default class Comment {
   ) {
     this.text = text;
     this.belongTo = belongTo;
-    this.likedBy = likedBy;
+    this.likes = likedBy;
     this.threads = threads;
   }
 }
