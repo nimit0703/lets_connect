@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import store from "./stores/store";
 import _ from "lodash-es";
+import './assets/main.css'
 
 const app = createApp(App);
 

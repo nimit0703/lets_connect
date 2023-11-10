@@ -1,14 +1,17 @@
 <template>
-  <div class="app-dark">
-    <div class="d-flex align-items-stretch align-self-stretch">
-      <NavCom
-        class="p-2 border-end border-secondary"
-        style="height: 100vh"
-      ></NavCom>
-      <div class="p-2" style="height: 100vh">
-        <router-view v-if="!loading"></router-view>
-        <div v-if="loading">
-          <Loader />
+  <div class="app" v-cursor-move>
+    <div class="cursor"></div>
+    <div class="app-dark">
+      <div class="d-flex align-items-stretch align-self-stretch">
+        <NavCom
+          class="p-2 border-end border-secondary"
+          style="height: 100vh"
+        ></NavCom>
+        <div class="p-2" style="height: 100vh">
+          <router-view v-if="!loading"></router-view>
+          <div v-if="loading">
+            <Loader />
+          </div>
         </div>
       </div>
     </div>
@@ -16,9 +19,10 @@
 </template>
 
 <script lang="ts">
-import NavCom from './components/common/nav/NavCom.vue';
-import Loader from './components/loader/Loader.vue';
-import store from './stores/store';
+import NavCom from "./components/common/nav/NavCom.vue";
+import Loader from "./components/loader/Loader.vue";
+import store from "./stores/store";
+
 export default {
   name: "App",
   components: {
@@ -27,11 +31,11 @@ export default {
   },
   data() {
     return {
-      loading: true, // Initialize loading state to true
+      loading: true,
     };
   },
   beforeCreate() {
-    this.loading = true; // Set loading state to true before component is created
+    this.loading = true;
   },
   async created() {
     try {
@@ -45,6 +49,17 @@ export default {
     } finally {
       this.loading = false;
     }
+  },
+  directives: {
+    cursorMove: {
+      mounted(el) {
+        const cursor = document.querySelector(".cursor") as HTMLDivElement;
+        el.addEventListener("mousemove", function (e:any) {
+          cursor.style.left = e.x + "px";
+          cursor.style.top = e.y + "px";
+        });
+      },
+    },
   },
 };
 </script>
