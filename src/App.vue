@@ -36,7 +36,6 @@ export default {
     };
   },
   async beforeCreate() {
-    debugger
     this.loading = true;
     const response = await axios.get('http://localhost:8080/api/user/allUser'); // Replace with your actual endpoint
     console.log("backend:",response)
