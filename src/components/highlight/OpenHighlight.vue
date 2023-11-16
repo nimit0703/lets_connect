@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import Highlight from "@/classes/Highlight";
+import Highlight from "../../classes/Highlight";
 import store from "../../stores/store";
 import Story from "../../classes/Story";
 import _ from "lodash";

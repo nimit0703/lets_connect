@@ -19,6 +19,7 @@
 </template>
 
 <script lang="ts">
+import axios from "axios";
 import NavCom from "./components/common/nav/NavCom.vue";
 import Loader from "./components/loader/Loader.vue";
 import store from "./stores/store";
@@ -34,8 +35,12 @@ export default {
       loading: true,
     };
   },
-  beforeCreate() {
+  async beforeCreate() {
+    debugger
     this.loading = true;
+    const response = await axios.get('http://localhost:8080/api/user/allUser'); // Replace with your actual endpoint
+    console.log("backend:",response)
+
   },
   async created() {
     try {

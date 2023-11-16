@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import Comment from "@/classes/Comment";
+import Comment from "../../classes/Comment";
 import store from "../..//stores/store";
 import Post from "../../classes/Post";
 import User from "../../classes/User";
