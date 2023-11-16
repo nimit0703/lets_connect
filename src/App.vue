@@ -3,11 +3,10 @@
     <div class="cursor"></div>
     <div class="app-dark">
       <div class="d-flex align-items-stretch align-self-stretch">
-        <NavCom
-          class="p-2 border-end border-secondary"
-          style="height: 100vh"
-        ></NavCom>
-        <div class="p-2" style="height: 100vh">
+        <!-- Apply the no-scroll class to prevent scrolling on NavCom -->
+        <NavCom class="p-2 border-end border-secondary no-scroll" style="height: 100vh"></NavCom>
+        <div class="space"></div>
+        <div class="p-2" style="height: 100vh; ">
           <router-view v-if="!loading"></router-view>
           <div v-if="loading">
             <Loader />
@@ -37,8 +36,8 @@ export default {
   },
   async beforeCreate() {
     this.loading = true;
-    const response = await axios.get('http://localhost:8080/api/user/allUser'); // Replace with your actual endpoint
-    console.log("backend:",response)
+    // const response = await axios.get('http://localhost:8080/api/user/allUser'); // Replace with your actual endpoint
+    // console.log("backend:",response)
 
   },
   async created() {
@@ -73,4 +72,14 @@ export default {
   background-color: black;
   color: #fff;
 }
+.no-scroll{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+.space{
+  display: flex;
+  margin-right: 20vw;}
 </style>

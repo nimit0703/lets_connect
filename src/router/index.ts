@@ -2,6 +2,7 @@
 import HomeViewVue from "../views/HomeView.vue";
 import UserProfile from "../views/UserProfile.vue";
 import SearchView from "../views/SearchView.vue";
+import ExploreView from "../views/ExploreView.vue"
 import store from "../stores/store";
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -12,6 +13,7 @@ const router = createRouter({
     { path: "/", name: "/", component: HomeViewVue },
     { path: "/:username", name: "userProfile", component: UserProfile },
     { path: "/search", name: "search", component: SearchView },
+    { path: "/explore", name: "explore", component: ExploreView },
   ],
 });
 export default router;

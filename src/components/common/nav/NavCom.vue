@@ -30,7 +30,7 @@
             </router-link>
           </div>
           <div class="d-flex">
-            <router-link to="home" class="icon-link">
+            <router-link to="explore" class="icon-link">
               <i class="bi bi-compass"></i><span class="text">Explore</span>
             </router-link>
           </div>
