@@ -28,6 +28,10 @@ const mutations = {
   setLoader(state: any, value: boolean) {
     state.showLoder = value;
   },
+
+  setThisUser(state:any, payload:User){
+    state.thisUser = payload;
+  }
 };
 // comment added
 

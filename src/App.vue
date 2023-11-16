@@ -37,16 +37,12 @@ export default {
   },
   async beforeCreate() {
     this.loading = true;
-    const response = await axios.get('http://localhost:8080/api/user/allUser'); // Replace with your actual endpoint
-    console.log("backend:",response)
-
   },
   async created() {
     try {
-      await Promise.all([
-        store.dispatch("fetchUserData"),
-        store.dispatch("fetchPostData"),
-      ]);
+      const responseThisUser = await axios.get("http://localhost:8080/api/user/1"); // Replace with your actual endpoint
+      store.commit("setThisUser", responseThisUser.data);
+
       console.log("Data fetched", store.state);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -54,11 +50,12 @@ export default {
       this.loading = false;
     }
   },
+
   directives: {
     cursorMove: {
       mounted(el) {
         const cursor = document.querySelector(".cursor") as HTMLDivElement;
-        el.addEventListener("mousemove", function (e:any) {
+        el.addEventListener("mousemove", function (e: any) {
           cursor.style.left = e.x + "px";
           cursor.style.top = e.y + "px";
         });
