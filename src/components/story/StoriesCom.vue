@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import User from "@/interfaces/User";
+import User from "../../interfaces/User";
 import store from "../../stores/store";
 
 import StoriesGroup from "./StoriesGroup.vue";
