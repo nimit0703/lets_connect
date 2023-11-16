@@ -3,11 +3,10 @@
     <div class="cursor"></div>
     <div class="app-dark">
       <div class="d-flex align-items-stretch align-self-stretch">
-        <NavCom
-          class="p-2 border-end border-secondary"
-          style="height: 100vh"
-        ></NavCom>
-        <div class="p-2" style="height: 100vh">
+        <!-- Apply the no-scroll class to prevent scrolling on NavCom -->
+        <NavCom class="p-2 border-end border-secondary no-scroll" style="height: 100vh"></NavCom>
+        <div class="space"></div>
+        <div class="p-2" style="height: 100vh; margin-left: auto;">
           <router-view v-if="!loading"></router-view>
           <div v-if="loading">
             <Loader />
@@ -37,12 +36,16 @@ export default {
   },
   async beforeCreate() {
     this.loading = true;
+    // const response = await axios.get('http://localhost:8080/api/user/allUser'); // Replace with your actual endpoint
+    // console.log("backend:",response)
+
   },
   async created() {
     try {
-      const responseThisUser = await axios.get("http://localhost:8080/api/user/1"); // Replace with your actual endpoint
-      store.commit("setThisUser", responseThisUser.data);
-
+      await Promise.all([
+        store.dispatch("fetchUserData"),
+        store.dispatch("fetchPostData"),
+      ]);
       console.log("Data fetched", store.state);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -50,12 +53,11 @@ export default {
       this.loading = false;
     }
   },
-
   directives: {
     cursorMove: {
       mounted(el) {
         const cursor = document.querySelector(".cursor") as HTMLDivElement;
-        el.addEventListener("mousemove", function (e: any) {
+        el.addEventListener("mousemove", function (e:any) {
           cursor.style.left = e.x + "px";
           cursor.style.top = e.y + "px";
         });
@@ -69,5 +71,15 @@ export default {
 * {
   background-color: black;
   color: #fff;
+}
+.no-scroll{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.space{
+  display: flex;
+  width: 20vw;
 }
 </style>
