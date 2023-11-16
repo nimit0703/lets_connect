@@ -2,7 +2,9 @@
 ---------------------------------Pending-------------------------------
 
 -> toggling between user's story not working 
--> saved and Tagged is not working as well (bulding logis is also pending)
+-> Full post is incomplete  work on that
+-> cursor is not working
 
 ---------------------------------Resolved-------------------------------
+-> saved and Tagged is not working as well (bulding logic is also pending)
 -> user having single story is not opening :: Resolve
