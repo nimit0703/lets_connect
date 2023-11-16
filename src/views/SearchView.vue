@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .searchpage {
   display: flex;
-  width: 90vw;
+  width: 70vw;
   justify-content: center;
   margin: auto;
 }

@@ -17,7 +17,7 @@
         </router-link>
       </div>
       <div class="d-flex" @click="closeSidebar">
-        <router-link to="home" class="icon-link">
+        <router-link to="explore" class="icon-link">
           <i class="bi bi-compass"></i>
         </router-link>
       </div>
