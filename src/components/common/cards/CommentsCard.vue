@@ -127,8 +127,6 @@ div {
   font-size: 0.9rem;
   color: gray;
 }
-.comment-text {
-}
 .thread {
   display: flex;
   font-size: 0.9rem;
