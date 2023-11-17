@@ -24,7 +24,8 @@ const state = {
   showLoder: false,
   thisUser: user,
   users: [],
-
+  myFollowing : [] as User[],
+  myFollowers : [] as User[],
   posts: [],
 };
 // comment added

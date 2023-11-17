@@ -6,7 +6,7 @@ const mutations = {
   setUsers(state: any, users: User[]) {
     state.users = users;
   },
-  setPosts(state:any, posts:Post[]){
+  setPosts(state: any, posts: Post[]) {
     state.posts = posts;
   },
   likedPost(state: any, postId: number) {
@@ -29,9 +29,16 @@ const mutations = {
     state.showLoder = value;
   },
 
-  setThisUser(state:any, payload:User){
+  setThisUser(state: any, payload: User) {
     state.thisUser = payload;
-  }
+  },
+
+  setMyFollowing(state: any, payload: User[]) {
+    state.myFollowing = payload;
+  },
+  setMyFollowers(state: any, payload: User[]) {
+    state.myFollowers = payload;
+  },
 };
 // comment added
 
