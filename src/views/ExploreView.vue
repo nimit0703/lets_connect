@@ -7,10 +7,8 @@
     </div>
 
     <!-- Loader -->
-    <div v-if="loading" class="text-center mt-3">
-      <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
-        <span class="sr-only"></span>
-      </div>
+    <div v-if="loading" class="text-center pt-3 m-auto">
+      <Spinner2/>
     </div>
   </div>
 </template>
@@ -19,10 +17,11 @@
 import Post from "../classes/Post";
 import store from "../stores/store";
 import PostSm from "../components/post/PostSm.vue";
+import Spinner2 from "../components/loader/Spinner2.vue";
 import _ from "lodash";
 
 export default {
-  components: { PostSm },
+  components: { PostSm ,Spinner2},
   data() {
     return {
       posts: [] as Post[],
