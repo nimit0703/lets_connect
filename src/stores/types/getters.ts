@@ -72,6 +72,9 @@ const getters = {
   },
   smallNavGetter:(state:any)=>()=>{
     return state.smallNav;
+  },
+  getIsChatOpen:(state:any)=>()=>{
+    return state.isChatOpen;
   }
 };
 

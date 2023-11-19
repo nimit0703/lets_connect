@@ -30,6 +30,9 @@ const mutations = {
   },
   toggleSmallNav(state:any){
     state.smallNav = !state.smallNav;
+  },
+  toggleIsChatOpen(state:any){
+    state.isChatOpen =!state.isChatOpen;
   }
 };
 // comment added

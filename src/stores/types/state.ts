@@ -26,6 +26,7 @@ const state = {
   users: [],
   smallNav:false,
   posts: [],
+  isChatOpen:false,
 };
 // comment added
 
