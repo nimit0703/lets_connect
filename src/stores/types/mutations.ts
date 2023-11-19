@@ -28,6 +28,9 @@ const mutations = {
   setLoader(state: any, value: boolean) {
     state.showLoder = value;
   },
+  toggleSmallNav(state:any){
+    state.smallNav = !state.smallNav;
+  }
 };
 // comment added
 

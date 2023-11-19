@@ -21,8 +21,8 @@
           <i class="bi bi-compass"></i>
         </router-link>
       </div>
-      <div class="d-flex" @click="closeSidebar">
-        <router-link to="home" class="icon-link">
+      <div class="d-flex">
+        <router-link to="message" class="icon-link">
           <i class="bi bi-chat-dots"></i>
         </router-link>
       </div>
@@ -64,6 +64,7 @@ export default {
   methods: {
     closeSidebar() {
       this.$emit("close");
+      store.commit('toggleSmallNav');
     },
   },
 };

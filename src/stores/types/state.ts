@@ -24,7 +24,7 @@ const state = {
   showLoder: false,
   thisUser: user,
   users: [],
-
+  smallNav:false,
   posts: [],
 };
 // comment added

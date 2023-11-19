@@ -24,7 +24,7 @@
               <span class="text">Home</span>
             </router-link>
           </div>
-          <div class="d-flex" @click="mainNav = false">
+          <div class="d-flex" @click="toggleNav()">
             <router-link to="search" class="icon-link">
               <i class="bi bi-search"></i> <span class="text">Search</span>
             </router-link>
@@ -34,8 +34,8 @@
               <i class="bi bi-compass"></i><span class="text">Explore</span>
             </router-link>
           </div>
-          <div class="d-flex">
-            <router-link to="home" class="icon-link">
+          <div class="d-flex" @click="toggleNav()">
+            <router-link to="message" class="icon-link">
               <i class="bi bi-chat-dots"></i> <span class="text">Message</span>
             </router-link>
           </div>
@@ -85,6 +85,10 @@ export default {
     closeSidebar() {
       this.mainNav = true;
     },
+    toggleNav(){
+      this.mainNav = false
+      store.commit("toggleSmallNav");
+    }
   },
 };
 </script>
