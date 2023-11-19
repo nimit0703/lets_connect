@@ -57,6 +57,7 @@ export default {
   methods: {
     openChat(){
       store.commit("toggleIsChatOpen")
+      store.commit("setChatData", this.user)
     }
   },
 };

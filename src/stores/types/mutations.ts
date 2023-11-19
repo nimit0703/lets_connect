@@ -33,6 +33,9 @@ const mutations = {
   },
   toggleIsChatOpen(state:any){
     state.isChatOpen =!state.isChatOpen;
+  },
+  setChatData(state:any,payload:User){
+    state.chatData = {payload}
   }
 };
 // comment added

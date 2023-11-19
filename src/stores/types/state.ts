@@ -27,6 +27,7 @@ const state = {
   smallNav:false,
   posts: [],
   isChatOpen:false,
+  chatData:{} as any,
 };
 // comment added
 

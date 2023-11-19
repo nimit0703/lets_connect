@@ -75,6 +75,9 @@ const getters = {
   },
   getIsChatOpen:(state:any)=>()=>{
     return state.isChatOpen;
+  },
+  getChatData:(state:any)=>()=>{
+    return state.chatData;
   }
 };
 
