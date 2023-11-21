@@ -1,6 +1,7 @@
 ---------------------------------Pending-------------------------------
 -> use backend for data fatching
 -> add components for map(w'll use in location feature )
+-> use these Plugings vue-screen, VueAwesomeSwiper, vClickOutside, vue-loading-overlay
 
 ---------------------------------Implemented-------------------------------
 
