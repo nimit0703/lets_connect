@@ -4,6 +4,7 @@ import UserProfile from "../views/UserProfile.vue";
 import SearchView from "../views/SearchView.vue";
 import ExploreView from "../views/ExploreView.vue";
 import MessagesViewVue from "../views/MessagesView.vue";
+import Swiper1Vue from "../components/swiper/Swiper1.vue";
 import store from "../stores/store";
 import Chat from "../components/chat/Chat.vue"
 import { createRouter, createWebHistory } from "vue-router";
@@ -18,7 +19,7 @@ const router = createRouter({
     { path: "/explore", name: "explore", component: ExploreView },
     { path: "/message", name: "message", component: MessagesViewVue },
 
-    { path: "/s", name: "s", component: Chat },
+    { path: "/s", name: "s", component: Swiper1Vue },
   ],
 });
 export default router;
