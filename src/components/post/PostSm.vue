@@ -79,8 +79,8 @@ export default {
 .hover-content {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: -8px;
+  width: 103%;
   height: 100%;
   display: none;
   align-items: center;
