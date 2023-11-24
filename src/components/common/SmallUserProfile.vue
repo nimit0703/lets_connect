@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     followUser(){
-        console.log("followUser called")
+      // add follow logic here
     }
   },
 };

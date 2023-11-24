@@ -77,10 +77,7 @@ export default {
     post: Post,
   },
   created() {
-    console.log("postCard created",store.state) 
     this.user = store.getters.getUserById(this.post?.belongsTo);
-    console.log(this.post) 
-    console.log("postCard user",this.user) 
   },
   methods: {
     toggleHover(hovered: boolean) {

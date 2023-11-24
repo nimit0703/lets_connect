@@ -84,7 +84,6 @@ export default {
   },
   methods: {
     show_followers() {
-      console.log("clicked");
       this.listTitle = "Follower";
       this.list = this.user.followers;
       this.showList = true;

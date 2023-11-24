@@ -7,7 +7,6 @@ import User from "../../classes/User";
 const getters = {
   getHighlightsByUId: (state: any) => (id: number) => {
     const user: User = _.find(state.users, (user) => user.uid === id);
-    console.log("user: getHighlight", user);
     return user.highlights;
   },
   getPostsByFollowing: (state: any) => {
@@ -19,7 +18,6 @@ const getters = {
   },
   getUserById: (state: any) => (id: number) => {
     const user = _.find(state.users, (user) => user.uid == id);
-    console.log("getUserById", user, id);
     return user;
   },
   getPostById: (state: any) => (id: number) => {
@@ -27,10 +25,6 @@ const getters = {
   },
   getUsersHavingStories: (state: any) => () => {
     const usersHavingStories = _.filter(state.users, (user) => user.hasStories);
-    console.log(
-      "_____________________________________________________________________"
-    );
-    console.log("allusers", usersHavingStories);
     const currentUserIndex = _.findIndex(
       usersHavingStories,
       (user) => user.uid === state.thisUser.uid
@@ -38,11 +32,6 @@ const getters = {
     if (currentUserIndex !== -1) {
       usersHavingStories.splice(currentUserIndex, 1);
     }
-    console.log("allusers without thisUSer", usersHavingStories);
-    console.log(
-      "_____________________________________________________________________"
-    );
-
     return usersHavingStories;
   },
 
@@ -66,8 +55,6 @@ const getters = {
       const following = store.getters.getUserById(i);
       followings.push(following);
     }
-    console.log(followings);
-
     return followings;
   },
   smallNavGetter:(state:any)=>()=>{

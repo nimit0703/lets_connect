@@ -5,7 +5,6 @@
 <script lang="ts">
 export default {
   created(){
-    console.log("hello from loader")
   },
 };
 </script>

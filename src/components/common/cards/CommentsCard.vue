@@ -65,7 +65,6 @@ export default {
   },
   components: {},
   created() {
-    console.log("commentscard created", this.allComments);
   },
   methods: {
     getUserimg(id: number): string {

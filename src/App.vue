@@ -44,21 +44,24 @@ export default {
     // console.log("backend:",response)
   },
   async created() {
-    var userSystemTheme = this.getUserSystemTheme();    
+    console.log(
+      " _________________________________________________\n",
+      "               App has been created              \n",
+      "__________________________________________________"
+    );
+    var userSystemTheme = this.getUserSystemTheme();
     try {
       await Promise.all([
         store.dispatch("fetchUserData"),
         store.dispatch("fetchPostData"),
       ]);
-      console.log("Data fetched", store.state);
     } catch (error) {
-      console.error("Error fetching data:", error);
     } finally {
       this.loading = false;
     }
   },
   computed: {
-    isSmallNav(){
+    isSmallNav() {
       return store.state.smallNav;
     },
   },
@@ -74,15 +77,15 @@ export default {
     },
   },
   methods: {
-    getUserSystemTheme(){
+    getUserSystemTheme() {
       const theme =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-      if(theme) return theme;
-      else return "dark"
-    }
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      if (theme) return theme;
+      else return "dark";
+    },
   },
 };
 </script>

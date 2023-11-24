@@ -55,12 +55,10 @@ export default {
       return _.size(thisPost.comments);
     },
     OpenFullPost() {
-      console.log("clicked");
       this.showFullPost = true;
     },
     closeStory() {
       this.showFullPost = false;
-      console.log("closestory called",this.showFullPost);
     },
   },
 };

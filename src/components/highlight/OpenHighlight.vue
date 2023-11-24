@@ -68,12 +68,8 @@ export default {
     };
   },
   created() {
-    console.log("HighLight open created", this.highlights);
-    console.log("HighLight open Prop:Hid", this.hid);
-    console.log("HighLight open Prop:userId", this.userId);
     var hl: Highlight = _.find(this.highlights, (hl) => hl.hid === this.hid)!;
     this.stories = hl.hl;
-    console.log(this.stories);
     this.setActiveStory();
   },
   computed: {

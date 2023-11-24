@@ -80,12 +80,6 @@ export default {
   },
 
   created() {
-    // debugger
-    console.log("storiesGrop prop: stories", this.stories);
-    console.log("storiesGrop prop: selectedStory", this.userId);
-    console.log("storiesGrop prop: type", this.type);
-    document.body.style.overflow = "hidden";
-  
     this.currentUserIndex = _.findIndex(this.userIds,(id)=>id===this.userId);
     this.setUserStories();
   },

@@ -40,13 +40,10 @@ export default {
     };
   },
   created() {
-    console.log("homeview created", store.state);
     this.posts = store.getters.getPostsByFollowing;
     store.state.showLoder = true;
-    console.log("showLoder set to true");
   },
   mounted() {
-    console.log("homeview mounted");
     setTimeout(() => {
       store.state.showLoder = false;
     }, 200);
