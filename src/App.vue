@@ -44,6 +44,7 @@ export default {
     // console.log("backend:",response)
   },
   async created() {
+    var userSystemTheme = this.getUserSystemTheme();    
     try {
       await Promise.all([
         store.dispatch("fetchUserData"),
@@ -71,6 +72,17 @@ export default {
         });
       },
     },
+  },
+  methods: {
+    getUserSystemTheme(){
+      const theme =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+      if(theme) return theme;
+      else return "dark"
+    }
   },
 };
 </script>
