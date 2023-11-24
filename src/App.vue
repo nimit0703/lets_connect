@@ -2,6 +2,7 @@
   <div class="app" v-cursor-move>
     <div class="cursor"></div>
     <div class="app-dark">
+      <Loader/>
       <div class="d-flex align-items-stretch align-self-stretch">
         <!-- Apply the no-scroll class to prevent scrolling on NavCom -->
         <NavCom
@@ -11,9 +12,6 @@
         <div :class="{ 'space-20': !isSmallNav, 'space-7': isSmallNav }"></div>
         <div class="p-2" style="height: 100vh; width: 100%">
           <router-view v-if="!loading"></router-view>
-          <div v-if="loading">
-            <Loader />
-          </div>
         </div>
       </div>
     </div>
@@ -100,7 +98,7 @@ export default {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 999;
+  z-index: 99;
 }
 .space-20 {
   display: flex;

@@ -83,7 +83,7 @@ export default {
   background-color: rgba(8, 8, 8, 0.297);
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 130;
   overflow-y: hidden;
   backdrop-filter: blur(10px); /* Adjust the blur value as needed */
 

@@ -92,7 +92,7 @@ export default {
   transform: translate(-50%, -50%);
   background-color: #242424;
   border: 1px solid #000;
-  z-index: 999;
+  z-index: 150;
   overflow: hidden; /* Hidden overflow to prevent the whole modal from scrolling */
   border-radius: 5%;
   padding-bottom: 6rem;

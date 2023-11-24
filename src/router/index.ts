@@ -6,8 +6,9 @@ import ExploreView from "../views/ExploreView.vue";
 import MessagesViewVue from "../views/MessagesView.vue";
 import Swiper1Vue from "../components/swiper/Swiper1.vue";
 import store from "../stores/store";
-import Chat from "../components/chat/Chat.vue"
+import Chat from "../components/chat/Chat.vue";
 import { createRouter, createWebHistory } from "vue-router";
+import { difference } from "lodash";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,4 +23,16 @@ const router = createRouter({
     { path: "/s", name: "s", component: Swiper1Vue },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  store.commit("setLoader", true);
+  next();
+});
+
+router.afterEach(() => {
+  setTimeout(() => {
+    store.commit("setLoader", true);
+  },50);
+});
+
 export default router;

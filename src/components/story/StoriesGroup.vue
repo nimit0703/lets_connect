@@ -203,7 +203,7 @@ export default {
   background-color: rgb(8, 8, 8);
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 130;
   overflow-y: hidden;
 }
 .individual-story-container {

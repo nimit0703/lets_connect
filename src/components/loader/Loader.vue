@@ -1,10 +1,18 @@
 <template>
-  <div class="horizontal-loader"></div>
+  <div class="div" v-show="showLoader">
+    <div class="horizontal-loader"></div>
+  </div>
 </template>
 
 <script lang="ts">
+import store from '../../stores/store';
+
 export default {
-  created(){
+  created() {},
+  computed: {
+    showLoader() {
+      return store.getters.getShowLoader();
+    },
   },
 };
 </script>
@@ -16,6 +24,7 @@ export default {
   height: 5px;
   background: linear-gradient(to right, rgb(250, 115, 217), #8261f9, #21004a);
   animation: loadani infinite 500ms;
+  z-index: 999;
 }
 @keyframes loadani {
   30% {
@@ -24,6 +33,5 @@ export default {
   60% {
     background: linear-gradient(to right, #21004a, rgb(250, 115, 217), #21004a);
   }
-  
 }
 </style>

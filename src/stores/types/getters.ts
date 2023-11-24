@@ -65,6 +65,9 @@ const getters = {
   },
   getChatData:(state:any)=>()=>{
     return state.chatData;
+  },
+  getShowLoader:(state:any)=>()=>{
+    return state.showLoder;
   }
 };
 
