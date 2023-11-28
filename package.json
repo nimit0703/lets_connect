@@ -26,6 +26,7 @@
     "vue-lodash": "^2.1.2",
     "vue-native-websocket": "^2.0.15",
     "vue-router": "^4.2.5",
+    "vue-screen": "^2.3.2",
     "vuex": "^4.1.0",
     "websocket": "^1.0.34"
   },

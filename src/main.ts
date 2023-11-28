@@ -10,6 +10,7 @@ import 'swiper/css'
 
 // import socket from './socket';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
+import VueScreen from "vue-screen";
 
 const app = createApp(App);
 
@@ -17,5 +18,6 @@ const app = createApp(App);
 app.use(router);
 app.use(store);
 app.use(VueAwesomeSwiper)
+app.use(VueScreen,'bootstrap')
 
 app.mount("#app"); // Mount the app after data is loaded
