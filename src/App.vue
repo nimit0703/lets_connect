@@ -4,7 +4,7 @@
     <div class="app-dark">
       <Loader />
       <div
-        v-if="$screen.width > 600"
+        v-if="$screen.width > 650"
         class="d-flex align-items-stretch align-self-stretch"
       >
         <!-- Apply the no-scroll class to prevent scrolling on NavCom -->
@@ -129,5 +129,7 @@ export default {
   position: fixed;
   bottom: 0;
   overflow: hidden;
+  margin-left: 0;
+  padding: 0;
 }
 </style>

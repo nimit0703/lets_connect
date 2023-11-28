@@ -48,27 +48,28 @@
   left: 0;
   right: 0;
   border-top: 0.1px solid gray;
-  padding-left: 4vw;
-  padding-bottom: 2vh;
-  padding-right: 4vw;
   overflow: hidden;
 }
 .user-profile-nav {
   margin-top: 1vh;
-  padding: 0;
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
 .img {
   margin-top: 1vh;
-  padding: 0;
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
 .icon-link i {
   font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .icon-link i {
+    font-size: 1rem; /* Adjust the icon size for smaller screens */
+  }
 }
 </style>
 

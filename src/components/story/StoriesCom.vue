@@ -2,7 +2,6 @@
   <div class="">
     <template v-if="fullStory">
       <div>
-
         <StoriesGroup
           :stories="getStoriesFromUsers(stories)"
           :userId="getUserIdFromSelectedStory"
@@ -111,6 +110,26 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 650px) {
+  .story-container {
+    max-width: 40%; /* Make the container full width on smaller screens */
+    padding: 0 ; /* Adjust padding for better readability on smaller screens */
+  }
+
+  .story-button {
+    margin: 0 3px; /* Adjust button margin for smaller screens */
+  }
+
+  .individual-story {
+    width: 50px; /* Reduce the width of individual stories on smaller screens */
+  }
+
+  .individual-story img {
+    width: 25px; /* Reduce the size of images for smaller screens */
+    height: 25px;
+    margin: 0 2px;
+  }
+}
 .story-container {
   display: flex;
   align-items: center;
