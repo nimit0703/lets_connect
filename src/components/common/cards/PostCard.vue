@@ -111,12 +111,34 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 650px) {
+  .post {
+    display: flex;
+    flex-direction: column; /* Adjust layout for smaller screens */
+    width: 500px; /* Set width to 500px for smaller screens */
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+  .user-profile-post {
+    margin: 10px auto; /* Center the user profile image on smaller screens */
+  }
+
+  .post-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  .post-img img{
+    width: 520px;
+    height: 520px;
+  }
+}
 .post {
   display: flex;
   width: 542px;
   height: 760px;
 }
-
 .user-profile-post {
   width: 35px;
   height: 35px;
