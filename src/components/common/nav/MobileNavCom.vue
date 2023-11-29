@@ -49,6 +49,7 @@
   right: 0;
   border-top: 0.1px solid gray;
   overflow: hidden;
+  padding: 3%;
 }
 .user-profile-nav {
   margin-top: 1vh;

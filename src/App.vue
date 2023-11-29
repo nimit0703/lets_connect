@@ -1,6 +1,5 @@
 <template>
   <div class="app" v-cursor-move>
-    <div class="cursor"></div>
     <div class="app-dark">
       <Loader />
       <div
