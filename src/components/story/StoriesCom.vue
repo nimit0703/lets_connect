@@ -10,7 +10,11 @@
       </div>
     </template>
     <div class="story-container">
-      <button @click="showPreviousStories" class="story-button">
+      <button
+        @click="showPreviousStories"
+        :class="$screen.width < 650 ? 'm-0 p-0' : null"
+        class="story-button"
+      >
         <i class="bi bi-caret-left-fill"></i>
       </button>
       <div class="story-wrapper">
@@ -60,7 +64,11 @@ export default {
       selectedStory: {} as Story,
     };
   },
-  created() {},
+  created() {
+    if (this.$screen.width < 650) {
+      this.storiesPerPage = 5;
+    }
+  },
   computed: {
     displayedStories() {
       const startIndex = this.activeIndex * this.storiesPerPage;
@@ -110,14 +118,14 @@ export default {
 </script>
 
 <style scoped>
-@media (max-width: 650px) {
+@media (max-width< 650px) {
   .story-container {
-    max-width: 40%; /* Make the container full width on smaller screens */
-    padding: 0 ; /* Adjust padding for better readability on smaller screens */
+    display: flex;
+    padding: 0; /* Adjust padding for better readability on smaller screens */
   }
 
   .story-button {
-    margin: 0 3px; /* Adjust button margin for smaller screens */
+    margin: 0; /* Adjust button margin for smaller screens */
   }
 
   .individual-story {
@@ -129,21 +137,13 @@ export default {
     height: 25px;
     margin: 0 2px;
   }
+  .story-button {
+    margin: 0;
+    padding: 0;
+  }
 }
-.story-container {
-  display: flex;
-  align-items: center;
-  width: 800px;
-}
-
-.story-button {
-  cursor: pointer;
-  margin: 0 10px;
-  border: none;
-}
-
 .story-wrapper {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -151,6 +151,16 @@ export default {
 
 .story {
   display: flex;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 .individual-story {
   display: flex;
@@ -162,18 +172,33 @@ export default {
 .individual-story img {
   width: 60px;
   height: 60px;
-  margin: 0 5px;
+  /* margin: 0 5px; */
   border-radius: 50%;
   border: 2px solid pink;
 }
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
+.story-button {
+  cursor: pointer;
+  margin: 0 10px;
+  border: none;
 }
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.story-container {
+  display: flex;
+  padding: 0; /* Adjust padding for better readability on smaller screens */
+}
+@media (max-width>= 1200px) {
+  .individual-story {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: small;
+    width: 100px;
+  }
+  .individual-story img {
+    width: 60px;
+    height: 60px;
+    margin: 0 5px;
+    border-radius: 50%;
+    border: 2px solid pink;
+  }
 }
 </style>

@@ -1,12 +1,19 @@
 <template>
   <div>
-    <div class="container post border border-secondary p-0">
+    <div
+      :class="$screen.width > 650 ? 'container' : null"
+      class="post border border-secondary p-0"
+    >
       <div class="d-flex flex-column">
         <div class="user p-2" style="flex: 1">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex">
               <div class="img-fluid">
-                <img :src="user.profile_img" alt="" class="user-profile-post border border-warning" />
+                <img
+                  :src="user.profile_img"
+                  alt=""
+                  class="user-profile-post border border-warning"
+                />
               </div>
               <div class="d-flex flex-column">
                 <span>{{ user.userName }}</span>
@@ -70,7 +77,7 @@ export default {
     return {
       user: {} as User,
       isHovered: false,
-      isLiked: false, 
+      isLiked: false,
     };
   },
   props: {
@@ -96,9 +103,9 @@ export default {
     thisPost() {
       return store.getters.getPostById(this.post?.id);
     },
-    likesSize(){
+    likesSize() {
       return _.size(this.thisPost.likes);
-    }
+    },
   },
 };
 </script>
