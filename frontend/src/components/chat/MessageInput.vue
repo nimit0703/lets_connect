@@ -1,10 +1,10 @@
 <template>
   <div>
-    <input
+    <!-- <input
       v-model="newMessage"
       @keyup.enter="sendMessage"
       placeholder="Type your message"
-    />
+    /> -->
   </div>
 </template>
 
