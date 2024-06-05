@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex align-items-center">
       <div class="img">
-        <img :src="userData.profile_img" alt="" />
+        <img :src="userData.profile_img" alt="story Image" />
       </div>
       <div class="data d-flex flex-column">
         <p>{{ userData.userName }}</p>
@@ -29,7 +29,7 @@ export default {
 
   data() {
     return {
-      userData: store.getters.getUserById(this.id) as User,
+      userData: {},
       myid:store.state.thisUser.uid,
     };
   },
@@ -38,6 +38,10 @@ export default {
       // add follow logic here
     }
   },
+  mounted(){
+    this.userData = store.getters.getUserById(this.id) as User
+
+  }
 };
 </script>
 
