@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <template v-if="fullStory">
       <div>
         <StoriesGroup
@@ -9,36 +9,30 @@
         ></StoriesGroup>
       </div>
     </template>
-    <div class="story-container">
-      <button
-        @click="showPreviousStories"
-        :class="$screen.width < 650 ? 'm-0 p-0' : null"
-        class="story-button"
-      >
-        <i class="bi bi-caret-left-fill"></i>
-      </button>
-      <div class="story-wrapper">
-        <transition name="fade" mode="out-in">
-          <div :key="activeIndex" class="story">
-            <div
-              v-for="story in displayedStories"
-              :key="story.uid"
-              class="individual-story d-flex flex-column"
-              @click="openStory(story.stories[0])"
+    <div class="d-flex container-fluid">
+      <div class="story-wrapper" ref="storyWrapper">
+        <div class="stories-scroll container">
+          <swiper
+            :slidesPerView="'auto'"
+            :spaceBetween="30"
+            :loop="false"
+            class="mySwiper"
             >
-              <img
-                :src="story.profile_img"
-                alt=""
-                class="img-fluid story-img"
-              />
-              <p>{{ story.userName }}</p>
-            </div>
-          </div>
-        </transition>
+              <swiper-slide  
+                v-for="story in stories"
+                @click="openStory(story.stories[0])"
+                :key="story.uid"
+                class="individual-story d-flex flex-column">
+                <img
+                  :src="story.profile_img"
+                  alt=""
+                  class="img-fluid story-img"
+                />
+                <p class="d-none d-md-block">{{ story.userName }}</p>
+              </swiper-slide>
+          </swiper>
+        </div>
       </div>
-      <button @click="showNextStories" class="story-button">
-        <i class="bi bi-caret-right-fill"></i>
-      </button>
     </div>
   </div>
 </template>
@@ -46,35 +40,31 @@
 <script lang="ts">
 import User from "../../interfaces/User";
 import store from "../../stores/store";
-
 import StoriesGroup from "./StoriesGroup.vue";
 import _ from "lodash";
 import Story from "../../classes/Story";
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css'
+import 'swiper/css/pagination';
 
 export default {
   components: {
     StoriesGroup,
+    Swiper,
+    SwiperSlide
   },
+  setup() {
+      return {
+      };
+    },
   data() {
     return {
       stories: this.usersWithStories() as User[],
-      activeIndex: 0,
-      storiesPerPage: 7,
       fullStory: false,
       selectedStory: {} as Story,
     };
   },
-  created() {
-    if (this.$screen.width < 650) {
-      this.storiesPerPage = 5;
-    }
-  },
   computed: {
-    displayedStories() {
-      const startIndex = this.activeIndex * this.storiesPerPage;
-      const endIndex = startIndex + this.storiesPerPage;
-      return this.stories.slice(startIndex, endIndex);
-    },
     getUserIdFromSelectedStory(): number {
       return this.selectedStory.belongTo;
     },
@@ -93,17 +83,12 @@ export default {
       this.fullStory = false;
     },
     showNextStories() {
-      if (
-        this.activeIndex <
-        Math.ceil(this.stories.length / this.storiesPerPage) - 1
-      ) {
-        this.activeIndex++;
-      }
+      const storyWrapper = this.$refs.storyWrapper as HTMLElement;
+      storyWrapper.scrollLeft += storyWrapper.clientWidth;
     },
     showPreviousStories() {
-      if (this.activeIndex > 0) {
-        this.activeIndex--;
-      }
+      const storyWrapper = this.$refs.storyWrapper as HTMLElement;
+      storyWrapper.scrollLeft -= storyWrapper.clientWidth;
     },
     getStoriesFromUsers(users: User[]) {
       const stories = _.flatMap(users, (user) => user.stories);
@@ -116,89 +101,58 @@ export default {
   },
 };
 </script>
-
 <style scoped>
-@media (max-width< 650px) {
-  .story-container {
-    display: flex;
-    padding: 0; /* Adjust padding for better readability on smaller screens */
-  }
-
-  .story-button {
-    margin: 0; /* Adjust button margin for smaller screens */
-  }
-
-  .individual-story {
-    width: 50px; /* Reduce the width of individual stories on smaller screens */
-  }
-
-  .individual-story img {
-    width: 25px; /* Reduce the size of images for smaller screens */
-    height: 25px;
-    margin: 0 2px;
-  }
-  .story-button {
-    margin: 0;
-    padding: 0;
-  }
-}
 .story-wrapper {
-  /* flex-grow: 1; */
   display: flex;
-  align-items: center;
-  overflow: hidden;
+  overflow-x: scroll;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
 }
 
-.story {
+.story-wrapper::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.stories-scroll {
   display: flex;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
 .individual-story {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: small;
   width: 100px;
+  margin-right: 10px;
 }
+
 .individual-story img {
   width: 60px;
   height: 60px;
-  /* margin: 0 5px; */
   border-radius: 50%;
   border: 2px solid pink;
+  margin: 10px 10px;
 }
+
 .story-button {
   cursor: pointer;
-  margin: 0 10px;
   border: none;
 }
-.story-container {
-  display: flex;
-  padding: 0; /* Adjust padding for better readability on smaller screens */
-}
-@media (max-width>= 1200px) {
-  .individual-story {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: small;
-    width: 100px;
+
+@media (max-width: 650px) {
+  .story-button {
+    margin: 0;
+    padding: 0;
   }
+
+  .individual-story {
+    width: 50px;
+  }
+
   .individual-story img {
-    width: 60px;
-    height: 60px;
-    margin: 0 5px;
-    border-radius: 50%;
-    border: 2px solid pink;
+    width: 50px;
+    height: 50px;
+    margin: 10px 10px;
   }
 }
 </style>

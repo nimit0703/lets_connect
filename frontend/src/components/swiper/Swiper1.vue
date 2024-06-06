@@ -4,17 +4,10 @@
       class="swiper"
       :modules="modules"
       :pagination="true"
-      :effect="'coverflow'"
       :grab-cursor="true"
       :centered-slides="true"
       :slides-per-view="'auto'"
-      :coverflow-effect="{
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true
-      }"
+      
     >
       <swiper-slide class="slide" v-for="index in 8" :key="index">
         <img :src="`https://picsum.photos/id/${index}/540/540`" />

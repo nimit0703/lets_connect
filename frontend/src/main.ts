@@ -7,6 +7,7 @@ import store from "./stores/store";
 import _ from "lodash-es";
 import './assets/main.css'
 import 'swiper/css'
+import './assets/m576.css'
 
 // import socket from './socket';
 import VueAwesomeSwiper from 'vue-awesome-swiper';

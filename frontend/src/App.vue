@@ -12,7 +12,7 @@
           style="height: 100vh"
         ></NavCom>
         <div :class="{ 'space-20': !isSmallNav, 'space-7': isSmallNav }"></div>
-        <div class="p-2" style="height: 100vh; width: 100%">
+        <div class="p-2 flex-grow-1">
           <router-view v-if="!loading"></router-view>
         </div>
       </div>

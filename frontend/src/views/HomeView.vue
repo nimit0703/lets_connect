@@ -1,16 +1,11 @@
 <template>
-  <div>
-    <div class="d-flex align-items-stretch m-0">
-      <div class="d-flex flex-column p-3 parent">
-        <div
-          :class="$screen.width > 650 ? 'ps-2 flex-grow-1' : null"
-          class="storySection d-flex flex-column m-stories"
-        >
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div class="col col-sm-12 col-lg-9">
+        <div class="">
           <StoriesCom></StoriesCom>
         </div>
-        <div
-          class="postSection d-flex flex-column overflow-hidden"
-        >
+        <div class="">
           <PostCard
             v-for="post in posts"
             :post="post"
@@ -19,10 +14,7 @@
           ></PostCard>
         </div>
       </div>
-      <div
-        v-if="$screen.width > 650"
-        class="right-sec border-start border-secondary"
-      >
+      <div v-if="$screen.width > 650" class="col col-lg-3 border-start border-secondary">
         <HomeSideSection />
       </div>
     </div>
@@ -35,6 +27,7 @@ import PostCard from "../components/common/cards/PostCard.vue";
 import StoriesCom from "../components/story/StoriesCom.vue";
 import HomeSideSection from "../components/pages/home/HomeSideSection.vue";
 import Post from "../classes/Post";
+
 export default {
   name: "HomeView",
   components: {
@@ -58,6 +51,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .m-stories {
   margin: 10px 0 !important;

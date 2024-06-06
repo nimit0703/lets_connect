@@ -1,0 +1,6 @@
+@media (max-width: 768px) { 
+    .story-wrapper{
+        margin-left: 70px;
+        max-width: 540px;
+    }
+ }
