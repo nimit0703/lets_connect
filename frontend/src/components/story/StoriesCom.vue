@@ -107,6 +107,7 @@ export default {
   overflow-x: scroll;
   scrollbar-width: none; /* For Firefox */
   -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+  max-width: 900px;
 }
 
 .story-wrapper::-webkit-scrollbar {

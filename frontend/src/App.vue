@@ -3,7 +3,7 @@
     <div class="app-dark">
       <Loader />
       <div
-        v-if="$screen.width > 650"
+        v-if="$screen.width > 768"
         class="d-flex align-items-stretch align-self-stretch"
       >
         <!-- Apply the no-scroll class to prevent scrolling on NavCom -->
@@ -18,7 +18,7 @@
       </div>
       <div v-else class="mobile-view">
         <router-view v-if="!loading"></router-view>
-        <MobileNavCom></MobileNavCom>
+        <MobileNavCom id="mobile-nav"></MobileNavCom>
       </div>
     </div>
   </div>
@@ -129,6 +129,7 @@ export default {
   bottom: 0;
   overflow: hidden;
   margin-left: 0;
-  padding: 0;
+  padding: 1em;
+  min-width: 100vw;
 }
 </style>

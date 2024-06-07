@@ -1,11 +1,11 @@
 <template>
   <div class="container-fluid p-0">
     <div class="row">
-      <div class="col col-sm-12 col-lg-9">
+      <div class="col col-sm-12 col-lg-9 d-flex flex-column align-items-center">
         <div class="">
           <StoriesCom></StoriesCom>
         </div>
-        <div class="">
+        <div class="posts-container">
           <PostCard
             v-for="post in posts"
             :post="post"

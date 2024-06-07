@@ -52,7 +52,7 @@
   padding: 3%;
 }
 .user-profile-nav {
-  margin-top: 1vh;
+  margin-top: 0vh;
   width: 30px;
   height: 30px;
   border-radius: 50%;
