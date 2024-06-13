@@ -6,28 +6,26 @@
     </div>
     <div class="individual-story-container shadow">
       <div class="story">
-        <div class="profile-data">
-          <div class="d-flex flex-column bg-transparent">
-            <div class="user-story-tabs bg-transparent">
-              <div class="stick-container">
-                <div
-                  v-for="(story, index) in currentStoriesByUserId"
-                  :key="story.sid"
-                  @click="changeActiveStory(index)"
-                  class="stick"
-                  :class="{
-                    'active-tab': index === activeStoryIndex,
-                    'active-stick': index === activeStoryIndex,
+        <div class="user-story-tabs bg-transparent">
+          <div class="stick-container">
+            <div
+              v-for="(story, index) in currentStoriesByUserId"
+              :key="story.sid"
+              @click="changeActiveStory(index)"
+              class="stick"
+                :class="{
+                  'active-tab': index === activeStoryIndex,
+                  'active-stick': index === activeStoryIndex,
                   }"
-                ></div>
-              </div>
-            </div>
-
-            <div class="d-flex bg-transparent">
-              <img :src="userData?.profile_img" alt="" />
-              <p>{{ userData?.userName }}</p>
-            </div>
+              ></div>
+              <button @click="closeModal" class="cancel-button">
+                <i class="bi bi-x"></i>
+              </button>
           </div>
+        </div>
+        <div class="profile-data">
+          <img :src="userData?.profile_img" alt="" />
+          <p>{{ userData?.userName }}</p>
         </div>
         <img :src="activeStory?.content" alt="" class="main-img" />
       </div>
@@ -36,9 +34,7 @@
       <!-- :disabled="currentStoryIndex === maxStoryId" -->
       <i class="bi bi-caret-right-fill bg-transparent"></i>
     </div>
-    <button @click="closeModal" class="cancel-button">
-      <i class="bi bi-x"></i>
-    </button>
+    
   </div>
 </template>
 
@@ -59,9 +55,9 @@ export default {
       type: Number,
       required: true,
     },
-    type:{
-      default:"story",
-    }
+    type: {
+      default: "story",
+    },
   },
   data() {
     const storyIds = this.stories.map((story) => story.sid);
@@ -80,7 +76,10 @@ export default {
   },
 
   created() {
-    this.currentUserIndex = _.findIndex(this.userIds,(id)=>id===this.userId);
+    this.currentUserIndex = _.findIndex(
+      this.userIds,
+      (id) => id === this.userId
+    );
     this.setUserStories();
   },
   unmounted() {
@@ -91,8 +90,7 @@ export default {
       const currentUserId = this.userIds[this.currentUserIndex];
       this.currentStoriesByUserId = this.getUserStories(currentUserId);
       this.currentStoryIndex = 0;
-      this.activeStoryIndex = this.currentStoryIndex; 
-
+      this.activeStoryIndex = this.currentStoryIndex;
     },
     changeActiveStory(index: number) {
       this.activeStoryIndex = index;
@@ -102,7 +100,7 @@ export default {
       let currentIndex = this.currentStoryIndex;
       if (currentIndex > 0) {
         this.currentStoryIndex -= 1;
-        this.activeStoryIndex = this.currentStoryIndex; 
+        this.activeStoryIndex = this.currentStoryIndex;
       } else {
         this.showPreviousUserStories();
       }
@@ -113,7 +111,7 @@ export default {
       let maxStoriesByuser = this.currentStoriesByUserId.length;
       if (currentIndex < maxStoriesByuser - 1) {
         this.currentStoryIndex += 1;
-        this.activeStoryIndex = this.currentStoryIndex; 
+        this.activeStoryIndex = this.currentStoryIndex;
       } else {
         this.showNextUserStories();
       }
@@ -159,7 +157,7 @@ export default {
   justify-content: space-between;
   height: 10px;
   margin-bottom: 10px;
-  width: 27vw;
+  width: 100%; /* Adjusted to take full width of its container */
 }
 
 .stick-container {
@@ -169,42 +167,16 @@ export default {
 }
 .active-stick {
   height: 5px;
-  border: 2px solid rgb(28, 28, 28);
+  background-color: rgba(122, 75, 132, 0.6) !important;
   padding: 5px;
   flex: 1;
 }
 .stick {
   height: 5px;
   background-color: rgba(48, 48, 48, 0.6);
-  padding: 5px 10px;
-  flex: 10;
+  padding: 5px;
+  flex: 1; /* Adjusted to take equal space */
   margin-right: 4px;
-}
-.cancel-button {
-  position: absolute;
-
-  left: 62.5vw;
-  top: 5vh;
-  background: transparent;
-  border: none;
-}
-
-.cancel-button i {
-  background: transparent;
-  font-size: 1.8vw;
-}
-.fixed-bg {
-  position: fixed;
-  left: 0;
-  top: 0;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(8, 8, 8);
-  justify-content: center;
-  align-items: center;
-  z-index: 130;
-  overflow-y: hidden;
 }
 .individual-story-container {
   width: 30vw;
@@ -217,33 +189,55 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column; /* Adjusted to make children stack vertically */
 }
 .story .main-img {
-  width: inherit;
-  height: inherit;
+  width: 100%; /* Adjusted to take full width of its container */
+  height: 85%; /* Adjusted height to allow space for story bars */
   max-width: 30vw;
   max-height: 90vh;
   object-fit: cover;
 }
 .profile-data {
-  position: absolute;
-  top: 6vh;
-  left: 36vw;
+  width: 100%; /* Adjusted to take full width of the story container */
   background-color: transparent;
   display: flex;
+  /* justify-content: space-between; Ensure elements are spaced out */
+  padding: 0 10px; /* Add some padding for better layout */
 }
-
 .profile-data p {
+  margin-left: 2vw;
   background: transparent;
-  padding-left: 10px;
   margin-top: 5px;
 }
 .profile-data img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  top: 6vh;
-  left: 36vw;
   border: 2px solid orange;
+
 }
+.fixed-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(8, 8, 8, 0.297);
+  justify-content: center;
+  align-items: center;
+  z-index: 130;
+  overflow: hidden;
+  padding: 0;
+  backdrop-filter: blur(10px); /* Adjust the blur value as needed */
+
+}
+.cancel-button{
+  position: fixed;
+  right:10vw;
+  top:5vh;
+}
+
 </style>
