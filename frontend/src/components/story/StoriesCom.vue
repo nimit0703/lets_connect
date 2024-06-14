@@ -9,9 +9,9 @@
         ></StoriesGroup>
       </div>
     </template>
-    <div class="d-flex container-fluid">
-      <div class="story-wrapper" ref="storyWrapper">
-        <div class="stories-scroll container">
+    <div class="d-flex">
+      <div class="" ref="storyWrapper">
+        <div class="stories-scroll">
           <swiper
             :slidesPerView="'auto'"
             :spaceBetween="30"
