@@ -1,28 +1,25 @@
 <template>
-  <div class="app" v-cursor-move>
-    <div class="app-dark">
+  <div class="app" >
+    <div class="app">
       <Loader />
-      <div
-        v-if="$screen.width > 768"
-        class="d-flex align-items-stretch align-self-stretch"
-      >
-        <!-- Apply the no-scroll class to prevent scrolling on NavCom -->
-        <NavCom
-          class="p-2 border-end border-secondary no-scroll"
-          style="height: 100vh"
-        ></NavCom>
-        <div :class="{ 'space-20': !isSmallNav, 'space-7': isSmallNav }"></div>
-        <div class="p-2 flex-grow-1">
+      
+      <div class="row">
+        <div class="d-none d-md-block col-md-2 col-lg-2 col-xl-2">
+          <NavCom></NavCom>
+        </div>
+        <div class="col-12 col-md-10 col-lg-10 col-xl-10">
           <router-view v-if="!loading"></router-view>
         </div>
       </div>
-      <div v-else class="mobile-view">
-        <router-view v-if="!loading"></router-view>
-        <MobileNavCom id="mobile-nav"></MobileNavCom>
+      <div class="d-block d-md-none position-fixed bottom-0 w-100 ">
+        <MobileNavCom></MobileNavCom>
       </div>
     </div>
   </div>
 </template>
+
+
+
 
 <script lang="ts">
 import axios from "axios";
@@ -94,7 +91,10 @@ export default {
   background-color: black;
   color: #fff;
 }
-.bottom-space {
+.app{
+
+}
+/* .bottom-space {
   display: flex;
   height: 7vh;
 }
@@ -131,5 +131,5 @@ export default {
   margin-left: 0;
   padding: 1em;
   min-width: 100vw;
-}
+} */
 </style>

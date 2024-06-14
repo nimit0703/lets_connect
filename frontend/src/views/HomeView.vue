@@ -1,20 +1,22 @@
 <template>
-  <div class="container-fluid p-0">
+  <div class="">
     <div class="row">
-      <div class="col col-sm-12 col-lg-9 d-flex flex-column align-items-center">
-        <div class="">
-          <StoriesCom></StoriesCom>
-        </div>
-        <div class="posts-container">
-          <PostCard
-            v-for="post in posts"
-            :post="post"
-            :key="post.id"
-            class="mt-3"
-          ></PostCard>
+      <div class="d-flex flex-column col-sm-12 col-md-12 col-lg-9 ">
+        <div class="container m-auto">
+          <div class="">
+            <StoriesCom></StoriesCom>
+          </div>
+          <div class="">
+            <PostCard
+              v-for="post in posts"
+              :post="post"
+              :key="post.id"
+              class="mt-3"
+            ></PostCard>
+          </div>
         </div>
       </div>
-      <div v-if="$screen.width > 650" class="col col-lg-3 border-start border-secondary">
+      <div class="d-none d-lg-block d-xl-block col-lg-3 border-start border-secondary">
         <HomeSideSection />
       </div>
     </div>

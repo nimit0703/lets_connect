@@ -1,8 +1,7 @@
 <template>
   <div>
     <div
-      :class="$screen.width > 650 ? 'container' : null"
-      class="post border border-secondary p-0"
+      class="border border-secondary p-0"
     >
       <div class="d-flex flex-column">
         <div class="user p-2" style="flex: 1">
@@ -23,8 +22,8 @@
             <i class="bi bi-three-dots pe-2 fs-4"></i>
           </div>
         </div>
-        <div class="post-img mt-0" style="flex: 10">
-          <img :src="thisPost.img" alt="" />
+        <div class="img-fluid mt-0">
+          <img :src="thisPost.img" alt="" class="mx-auto d-block img-fluid" />
         </div>
         <div class="post-interaction d-flex flex-column" style="flex: 3">
           <div class="d-flex justify-content-between align-items-center">
