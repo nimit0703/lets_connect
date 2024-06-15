@@ -9,7 +9,7 @@
         ></StoriesGroup>
       </div>
     </template>
-    <div class="d-flex">
+    <div class="d-flex m-0 overflow-hidden">
       <div class="" ref="storyWrapper">
         <div class="stories-scroll">
           <swiper

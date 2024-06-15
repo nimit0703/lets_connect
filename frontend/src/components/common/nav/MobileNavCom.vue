@@ -50,6 +50,8 @@
   border-top: 0.1px solid gray;
   overflow: hidden;
   padding: 3%;
+  background-color: black;
+  color: white;
 }
 .user-profile-nav {
   margin-top: 0vh;
@@ -65,6 +67,7 @@
 }
 .icon-link i {
   font-size: 1.5rem;
+  color: white;
 }
 
 @media (max-width: 768px) {
