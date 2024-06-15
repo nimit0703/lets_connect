@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="row">
+    <div class="row me-0">
       <div class="d-flex flex-column col-sm-12 col-md-12 col-lg-9 ">
         <div class="container m-auto">
           <div class="">
