@@ -7,6 +7,7 @@ import MessagesViewVue from "../views/MessagesView.vue";
 import Swiper1Vue from "../components/swiper/Swiper1.vue";
 import store from "../stores/store";
 import Chat from "../components/chat/Chat.vue";
+import OauthLogin from "../components/Login/OAuthLogin.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import { difference } from "lodash";
 
@@ -19,7 +20,7 @@ const router = createRouter({
     { path: "/search", name: "search", component: SearchView },
     { path: "/explore", name: "explore", component: ExploreView },
     { path: "/message", name: "message", component: MessagesViewVue },
-
+    { path: "/login",name:"login",component:OauthLogin},
     { path: "/s", name: "s", component: Swiper1Vue },
   ],
 });
