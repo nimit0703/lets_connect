@@ -10,14 +10,14 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
 
 export default {
   data() {
     return {
       loggedIn: false,
-      user: {}
+      user: {} as any,
     };
   },
   methods: {
