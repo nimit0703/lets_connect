@@ -1,16 +1,16 @@
 <template>
-  <div class="container d-flex justify-content-center align-items-stretch mt-4">
-    <div class="profile-img d-flex justify-content-center">
+  <div class="d-flex  mt-4 overflow-hidden">
+    <div class="profile-img me-3">
       <img :src="user.profile_img" alt="" class="img-fluid" />
     </div>
     <div class="profile-data d-flex flex-column">
-      <div class="d-flex">
+      <div class="d-flex justify-content-between">
         <span class="fs-5">{{ user.userName }}</span>
-        <button type="button" class="btn btn-secondary">Edit profile</button>
-        <button type="button" class="btn btn-secondary">View Archive</button>
+        <button type="button" class="btn btn-secondary  text-nowrap d-none d-lg-block">Edit profile</button>
+        <button type="button" class="btn btn-secondary  text-nowrap d-none d-lg-block">View Archive</button>
         <i class="bi bi-gear-wide mt-1 ml-3"></i>
       </div>
-      <div class="d-flex mt-3">
+      <div class="d-flex mt-3 flex-column flex-lg-row">
         <span class="pe-5">{{ myPostsCount }} posts</span>
         <span class="pe-5" @click="show_followers"
           >{{ followers }} Followers</span
@@ -109,13 +109,13 @@ export default {
 
 <style scoped>
 .profile-img {
-  width: 300px;
-  height: 200px;
+  /* width: 300px; */
+  /* height: 200px; */
   /* border-radius: 50%; */
 }
 .profile-img img {
-  width: 150px;
-  height: 150px;
+  max-width: 150px;
+  max-height: 150px;
   border-radius: 50%;
 }
 
@@ -129,9 +129,9 @@ export default {
   margin: 0 7px;
 }
 .highlight-container {
-  width: 70vw;
+  /* width: 70vw;
   margin: 0 auto;
   padding: 0 6vw;
-  height: 145px;
+  height: 145px; */
 }
 </style>
