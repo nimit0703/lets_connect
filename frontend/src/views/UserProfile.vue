@@ -1,8 +1,12 @@
 <template>
-  <div>
+  <div class="container m-0">
     <div class="d-flex flex-column">
-      <ProfileUserInfo></ProfileUserInfo>
-      <ProfileUserFeed></ProfileUserFeed>
+      <div class="container">
+        <ProfileUserInfo></ProfileUserInfo>
+      </div>
+      <div class="container">
+        <ProfileUserFeed></ProfileUserFeed>
+      </div>
     </div>
   </div>
 </template>

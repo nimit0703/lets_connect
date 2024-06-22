@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-md-4" v-for="post in posts" :key="post.id">
+      <div class="col-4" v-for="post in posts" :key="post.id">
         <PostSm :post="post"/>
       </div>
     </div>

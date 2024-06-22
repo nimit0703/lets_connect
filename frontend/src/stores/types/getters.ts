@@ -68,7 +68,8 @@ const getters = {
   },
   getShowLoader:(state:any)=>()=>{
     return state.showLoder;
-  }
+  },
+  isAuthenticated: (state:any) => state.thisUser ?true : false,
 };
 
 // comment added

@@ -1,38 +1,40 @@
 <template>
-  <div class="fixed-bg">
-    <div class="left-story bg-transparent p-4" @click="showPreviousStory">
-      <!-- :disabled="currentStoryIndex === minStoryId" -->
-      <i class="bi bi-caret-left-fill bg-transparent"></i>
-    </div>
-    <div class="individual-story-container shadow">
-      <div class="story">
-        <div class="user-story-tabs bg-transparent">
-          <div class="stick-container">
-            <div
-              v-for="(story, index) in currentStoriesByUserId"
-              :key="story.sid"
-              @click="changeActiveStory(index)"
-              class="stick"
-                :class="{
-                  'active-tab': index === activeStoryIndex,
-                  'active-stick': index === activeStoryIndex,
-                  }"
-              ></div>
-              <button @click="closeModal" class="cancel-button">
-                <i class="bi bi-x"></i>
-              </button>
-          </div>
-        </div>
-        <div class="profile-data">
-          <img :src="userData?.profile_img" alt="" />
-          <p>{{ userData?.userName }}</p>
-        </div>
-        <img :src="activeStory?.content" alt="" class="main-img" />
+  <div class="fixed-bg position-fixed">
+    <div class="d-flex align-items-center  justify-content-center mt-3">
+      <div class="left-story bg-transparent p-1" @click="showPreviousStory">
+        <!-- :disabled="currentStoryIndex === minStoryId" -->
+        <i class="bi bi-caret-left-fill bg-transparent"></i>
       </div>
-    </div>
-    <div class="right-story bg-transparent p-4" @click="showNextStory">
-      <!-- :disabled="currentStoryIndex === maxStoryId" -->
-      <i class="bi bi-caret-right-fill bg-transparent"></i>
+      <div class="shadow">
+        <div class="story">
+          <div class="user-story-tabs bg-transparent">
+            <div class="d-flex">
+              <div
+                v-for="(story, index) in currentStoriesByUserId"
+                :key="story.sid"
+                @click="changeActiveStory(index)"
+                class="stick"
+                  :class="{
+                    'active-tab': index === activeStoryIndex,
+                    'active-stick': index === activeStoryIndex,
+                    }"
+                ></div>
+                <button @click="closeModal" class="cancel-button">
+                  <i class="bi bi-x"></i>
+                </button>
+            </div>
+          </div>
+          <div class="profile-data">
+            <img :src="userData?.profile_img" alt="" />
+            <p>{{ userData?.userName }}</p>
+          </div>
+          <img :src="activeStory?.content" alt="" class="img-fluid" />
+        </div>
+      </div>
+      <div class="right-story bg-transparent p-1" @click="showNextStory">
+        <!-- :disabled="currentStoryIndex === maxStoryId" -->
+        <i class="bi bi-caret-right-fill bg-transparent"></i>
+      </div>
     </div>
     
   </div>
@@ -153,7 +155,6 @@ export default {
 
 <style scoped>
 .user-story-tabs {
-  display: flex;
   justify-content: space-between;
   height: 10px;
   margin-bottom: 10px;
@@ -166,38 +167,19 @@ export default {
   flex: 1;
 }
 .active-stick {
-  height: 5px;
+  height: 3px;
   background-color: rgba(122, 75, 132, 0.6) !important;
-  padding: 5px;
+  padding: 1px;
   flex: 1;
 }
 .stick {
-  height: 5px;
+  height: 3px;
   background-color: rgba(48, 48, 48, 0.6);
-  padding: 5px;
+  padding: 1px;
   flex: 1; /* Adjusted to take equal space */
   margin-right: 4px;
 }
-.individual-story-container {
-  width: 30vw;
-  height: 90vh;
-  background-color: antiquewhite;
-}
-.story {
-  width: inherit;
-  height: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; /* Adjusted to make children stack vertically */
-}
-.story .main-img {
-  width: 100%; /* Adjusted to take full width of its container */
-  height: 85%; /* Adjusted height to allow space for story bars */
-  max-width: 30vw;
-  max-height: 90vh;
-  object-fit: cover;
-}
+
 .profile-data {
   width: 100%; /* Adjusted to take full width of the story container */
   background-color: transparent;
@@ -219,20 +201,18 @@ export default {
 }
 .fixed-bg {
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
   margin: 0;
-  display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(8, 8, 8, 0.297);
-  justify-content: center;
+  background-color: rgba(8, 8, 8, 0.929);
   align-items: center;
   z-index: 130;
-  overflow: hidden;
   padding: 0;
   backdrop-filter: blur(10px); /* Adjust the blur value as needed */
-
+  overflow: hidden !important;
 }
 .cancel-button{
   position: fixed;

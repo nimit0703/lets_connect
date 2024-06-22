@@ -5,9 +5,9 @@
         <OpenHighlight :hid="selectedHID" @close="closeStory"></OpenHighlight>
       </div>
     </template>
-    <div class="d-flex">
+    <div class="d-flex mb-4 align-items-start">
       <div
-        class="dflex flex-column justify-content-center align-items-center me-4"
+        class="d-flex flex-column justify-content-center align-items-center me-4"
         v-for="highlight in highlights"
         @click="openHighlight(highlight)"
       >
@@ -17,14 +17,14 @@
           <img
             :src="highlight.hl[0].content"
             alt=""
-            class="img-fluid highlight-img"
+            class="img-fluid"
           />
         </div>
         <div class="mt-2">
           <p class="m-0 text-center">{{ highlight.title }}</p>
         </div>
       </div>
-      <div class="dflex flex-column justify-content-center align-items-center">
+      <div class="d-flex flex-column justify-content-center align-items-center">
         <div
           class="highlight-border border border-secondary border-hover-primary d-flex justify-content-center align-items-center"
         >

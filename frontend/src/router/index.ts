@@ -8,7 +8,7 @@ import Swiper1Vue from "../components/swiper/Swiper1.vue";
 import store from "../stores/store";
 import Chat from "../components/chat/Chat.vue";
 import OauthLogin from "../components/Login/OAuthLogin.vue";
-import Login from "@/views/Login.vue";
+import LoginSigninView from "@/views/LoginSigninView.vue";
 import Register from "@/views/Register.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import { difference } from "lodash";
@@ -22,21 +22,11 @@ const router = createRouter({
     { path: "/search", name: "search", component: SearchView },
     { path: "/explore", name: "explore", component: ExploreView },
     { path: "/message", name: "message", component: MessagesViewVue },
-    { path: "/login", name: "login", component: Login },
+    { path: "/login", name: "login", component: LoginSigninView },
     { path: "/s", name: "s", component: Swiper1Vue },
     { path: "/register", name: "register", component: Register },
   ],
 });
 
-router.beforeEach((to, from, next) => {
-  store.commit("setLoader", true);
-  next();
-});
-
-router.afterEach(() => {
-  setTimeout(() => {
-    store.commit("setLoader", true);
-  }, 50);
-});
 
 export default router;

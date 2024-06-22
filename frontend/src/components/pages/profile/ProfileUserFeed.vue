@@ -1,7 +1,7 @@
 <template>
-  <div class="profUserFeed feed-container">
+  <div class="p-1">
     <hr class="m-0" />
-    <div>
+    <div class="d-flex justify-content-center">
       <ul class="nav nav-tabs text-secondary" id="myTabs">
         <li
           class="nav-item"

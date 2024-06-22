@@ -1,19 +1,28 @@
 <template>
   <div class="app">
-    <Loader />
-
-    <div class="row m-0">
-      <div class="d-none d-md-block col-md-2 col-lg-2 col-xl-2 border-end">
-        <NavCom />
-      </div>
-      <div class="col-12 col-md-10 col-lg-10 col-xl-10">
-        <router-view v-if="!loading"></router-view>
-      </div>
+    <Loader v-if="loading" />
+    <div v-if="!loading">
+      <template v-if="isAuthenticated">
+        <div>
+          <div class="row m-0">
+            <div class="d-none d-md-block col-md-2 col-lg-2 col-xl-2 border-end">
+              <NavCom />
+            </div>
+            <div class="col-12 col-md-10 col-lg-10 col-xl-10">
+              <router-view></router-view>
+            </div>
+          </div>
+          <div class="d-block d-md-none position-fixed bottom-0">
+            <MobileNavCom />
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="vh-100">
+          <LogninSigninView/>
+        </div>
+      </template>
     </div>
-    <div class="d-block d-md-none position-fixed bottom-0 ">
-      <MobileNavCom />
-    </div>
-    
   </div>
 </template>
 
@@ -21,7 +30,9 @@
 import NavCom from "./components/common/nav/NavCom.vue";
 import MobileNavCom from "./components/common/nav/MobileNavCom.vue";
 import Loader from "./components/loader/Loader.vue";
+import LogninSigninView from "@/views/LoginSigninView.vue"
 import store from "./stores/store";
+import { mapGetters } from "vuex";
 
 export default {
   name: "App",
@@ -29,6 +40,7 @@ export default {
     NavCom,
     Loader,
     MobileNavCom,
+    LogninSigninView,
   },
   data() {
     return {
@@ -46,6 +58,9 @@ export default {
     } finally {
       this.loading = false;
     }
+  },
+  computed: {
+    ...mapGetters(["isAuthenticated"]),
   },
 };
 </script>

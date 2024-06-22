@@ -44,7 +44,7 @@
   width: 100vw;
   height: 6.5vh;
   position: fixed;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   right: 0;
   border-top: 0.1px solid gray;

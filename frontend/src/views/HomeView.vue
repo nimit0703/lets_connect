@@ -6,7 +6,7 @@
           <div class="">
             <StoriesCom></StoriesCom>
           </div>
-          <div class="">
+          <div class="container justify-content-center" style="max-width: fit-content;">
             <PostCard
               v-for="post in posts"
               :post="post"
