@@ -36,6 +36,9 @@ const mutations = {
   },
   setChatData(state:any,payload:User){
     state.chatData = {payload}
+  },
+  setThisUser(state:any,payload:User){
+    state.thisUser = payload;
   }
 };
 // comment added
