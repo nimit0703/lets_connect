@@ -9,13 +9,13 @@
           <div class="d-flex align-items-center m-3">
             <div class="img-fluid">
               <img
-                :src="user.profile_img"
+                :src="user?.profile_img"
                 alt=""
                 class="user-profile-post border border-warning"
               />
             </div>
             <div class="d-flex">
-              <span>{{ user.userName }} : </span>
+              <span>{{ user?.userName }} : </span>
             </div>
             <div class="d-flex ps-2">
               <span class="text-white-50">Lorem ipsum dolor sit amet.</span>
@@ -50,7 +50,7 @@ export default {
   },
   data() {
     return {
-      user: store.state.thisUser as User,
+      user: store.state.thisUser as User | null,
       allComments: this.post.comments as unknown as Comment[],
     };
   },

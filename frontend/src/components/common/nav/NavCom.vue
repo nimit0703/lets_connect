@@ -53,11 +53,11 @@
             <router-link
               :to="{
                 name: 'userProfile',
-                params: { username: `${user.userName}` },
+                params: { username: `${user?.userName}` },
               }"
               class="icon-link"
             >
-              <img :src="user.profile_img" alt="" class="user-profile-nav" />
+              <img :src="user?.profile_img" alt="" class="user-profile-nav" />
               <span class="text">Profile</span>
             </router-link>
           </div>
@@ -78,7 +78,7 @@ export default {
   data() {
     return {
       mainNav: true,
-      user: store.state.thisUser as User,
+      user: store.state.thisUser as User | null,
     };
   },
   methods: {

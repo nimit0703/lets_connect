@@ -93,7 +93,7 @@ export default {
     getStoriesFromUsers(users: User[]) {
       const stories = _.flatMap(users, (user) => user.stories);
       const filteredStore = stories.filter(
-        (story: Story) => story.belongTo !== store.state.thisUser.uid
+        (story: Story) => story.belongTo !== store.state.thisUser?.uid
       );
 
       return filteredStore;

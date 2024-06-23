@@ -22,7 +22,7 @@ user.addNewHighlight(new Highlight(1, 1, "Glimps Of 2k22", [s1, s2, s3]));
 user.addNewHighlight(new Highlight(2, 1, "Glimps.. Of 2k23", [s3, s1, s2, s1]));
 const state = {
   showLoder: false,
-  thisUser: user,
+  thisUser: null as User | null,
   users: [],
   smallNav:false,
   posts: [],

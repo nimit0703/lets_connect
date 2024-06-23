@@ -1,11 +1,11 @@
 <template>
   <div class="d-flex  mt-4 overflow-hidden">
     <div class="profile-img me-3">
-      <img :src="user.profile_img" alt="" class="img-fluid" />
+      <img :src="user?.profile_img" alt="" class="img-fluid" />
     </div>
     <div class="profile-data d-flex flex-column">
       <div class="d-flex justify-content-between">
-        <span class="fs-5">{{ user.userName }}</span>
+        <span class="fs-5">{{ user?.userName }}</span>
         <button type="button" class="btn btn-secondary  text-nowrap d-none d-lg-block">Edit profile</button>
         <button type="button" class="btn btn-secondary  text-nowrap d-none d-lg-block">View Archive</button>
         <i class="bi bi-gear-wide mt-1 ml-3"></i>
@@ -59,7 +59,7 @@ export default {
     return {
       showList: false,
       listTitle: "",
-      list: [] as number[],
+      list: [] as number[] | undefined,
     };
   },
   computed: {
@@ -70,22 +70,22 @@ export default {
       return store.state.thisUser;
     },
     followers() {
-      return _.size(this.user.followers);
+      return _.size(this.user?.followers);
     },
     following() {
-      return _.size(this.user.following);
+      return _.size(this.user?.following);
     },
     myPostsCount() {
       return _.size(store.getters.getMypost());
     },
     myHighlights() {
-      return this.user.highlights;
+      return this.user?.highlights ? this.user?.highlights : [];
     },
   },
   methods: {
     show_followers() {
       this.listTitle = "Follower";
-      this.list = this.user.followers;
+      this.list = this.user?.followers ? this.user.followers : [];
       this.showList = true;
       document.body.style.overflow = "hidden";
 
@@ -98,7 +98,7 @@ export default {
     },
     show_following() {
       this.listTitle = "Following";
-      this.list = this.user.following;
+      this.list = this.user?.following ? this.user.followers :[];
       this.showList = true;
       document.body.style.overflow = "hidden";
 

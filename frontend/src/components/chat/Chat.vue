@@ -148,7 +148,7 @@ export default {
   created() {
     const chatData = store.getters.getChatData();
     const me = store.state.thisUser;
-    this.nickname = me.userName;
+    this.nickname = me?.userName;
     this.other = chatData.payload;
     store.commit("setLoader", true);
   },
