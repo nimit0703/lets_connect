@@ -1,6 +1,7 @@
+import { siteURL } from "@/plugins/config";
 import axios from "axios";
 
-const API_URL = 'http://localhost:5000/api/auth/';
+const API_URL = siteURL || 'http://localhost:5000/api/auth/';
 
 const instance = axios.create({
   baseURL: API_URL,
