@@ -40,11 +40,11 @@
         <router-link
           :to="{
             name: 'userProfile',
-            params: { username: `${user.userName}` },
+            params: { username: `${user?.userName}` },
           }"
           class="icon-link"
         >
-          <img :src="user.profile_img" alt="" class="user-profile-nav" />
+          <img :src="user?.profile_img" alt="" class="user-profile-nav" />
         </router-link>
       </div>
     </div>
@@ -58,7 +58,7 @@ import store from "../../../stores/store";
 export default {
   data() {
     return {
-      user: store.state.thisUser as User,
+      user: store.state.thisUser as User | null,
     };
   },
   methods: {

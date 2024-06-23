@@ -56,7 +56,7 @@ export default {
     },
     userId: {
       type: Number,
-      default: store.state.thisUser.uid,
+      default: store.state.thisUser?.uid,
     },
   },
   data() {

@@ -12,7 +12,7 @@
   
   <script lang="ts">
   import { register } from '@/services/authService';
-  
+  import apiRequest from '@/services/api/apiService'
   export default {
     data() {
       return {
@@ -24,10 +24,14 @@
     methods: {
       async register() {
         try {
-          const response = await register({
+          let data = {
             username: this.username,
             email: this.email,
             password: this.password,
+          }
+          apiRequest.register(data).then((res)=>{
+            console.log(res);
+            // this.$router.push('/login');
           });
           this.$router.push('/login');
         } catch (err) {

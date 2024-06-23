@@ -56,7 +56,7 @@ export default {
   },
   data() {
     return {
-      highlight: store.state.thisUser.stories,
+      highlight: store.state.thisUser?.stories,
       fullStory: false,
       selectedHighlight: {} as Highlight,
     };

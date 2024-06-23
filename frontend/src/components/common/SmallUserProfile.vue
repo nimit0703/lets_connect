@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       userData:{} as any,
-      myid:store.state.thisUser.uid,
+      myid:store.state.thisUser?.uid,
     };
   },
   methods: {

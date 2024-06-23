@@ -80,9 +80,9 @@ export default {
     follow(userId: number) {
       store.commit("follow", userId);
     },
-    isFollowing(userId: number): boolean {
+    isFollowing(userId: number): boolean | undefined {
       // Check if the current user is following the user
-      return store.state.thisUser.following.some(
+      return store.state.thisUser?.following.some(
         (followedId) => followedId === userId
       );
     },
