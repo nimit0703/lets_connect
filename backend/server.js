@@ -13,6 +13,8 @@ const allowedOrigins = ['http://localhost:5173', 'https://instagram-vue.onrender
 
 app.use(cors({
   origin: (origin, callback) => {
+    console.log(allowedOrigins);
+    console.log(origin);
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
