@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:5173', 'https://instagram-vue.onrender.com'];
+const allowedOrigins = ['http://localhost:5173', 'https://instagram-vue.onrender.com','https://instagram-vue-ten.vercel.app'];
 
 app.use(cors({
   origin: (origin, callback) => {
