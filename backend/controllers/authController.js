@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const UserData = require('../models/UserDataSchema');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -18,7 +19,17 @@ exports.register = async (req, res) => {
     });
 
     await user.save();
-
+    const data = await UserData.findOne({userId:user._id});
+    if(!data){
+      const newUserData = new UserData({
+        userId:user._id,
+        username:user.username,
+        email:user.email,
+        userAddress:"",
+        userBio:"Bio"
+      });
+      await newUserData.save();
+    }
     const payload = { userId: user.id };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
