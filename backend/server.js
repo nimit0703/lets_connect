@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
+const usersDataRoutes = require('./routes/usersData');
 const cors = require('cors');
 
 dotenv.config();
@@ -13,8 +14,6 @@ const allowedOrigins = ['http://localhost:5173', 'https://instagram-vue.onrender
 
 app.use(cors({
   origin: (origin, callback) => {
-    console.log(allowedOrigins);
-    console.log(origin);
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
@@ -35,6 +34,7 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch(err => console.log(err));
 
 app.use('/api/auth', authRoutes);
+app.use('/api', usersDataRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
