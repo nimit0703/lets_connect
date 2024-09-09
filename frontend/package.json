@@ -7,7 +7,8 @@
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.json --composite false"
+    "type-check": "vue-tsc --noEmit -p tsconfig.json --composite false",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@vue/runtime-core": "^3.3.8",
@@ -27,15 +28,24 @@
     "vuex": "^4.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
     "@tsconfig/node18": "^18.2.2",
+    "@types/jest": "^29.5.12",
     "@types/lodash": "^4.14.200",
     "@types/lodash-es": "^4.17.10",
     "@types/node": "^18.17.17",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.4.0",
+    "@vue/vue3-jest": "^29.2.6",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "npm-run-all2": "^6.0.6",
     "sass": "^1.69.5",
+    "ts-jest": "^29.2.5",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
     "vue-tsc": "^1.8.11"

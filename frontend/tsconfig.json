@@ -16,7 +16,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["lodash","vue","@vue/runtime-core"]
+    "types": ["lodash","vue","@vue/runtime-core","jest"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/services/websocket.ts"],
   "exclude": ["node_modules"],
